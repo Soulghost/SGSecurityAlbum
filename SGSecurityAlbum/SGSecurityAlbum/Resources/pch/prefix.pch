@@ -1,0 +1,25 @@
+//
+//  prefix.pch
+//  SGSecurityAlbum
+//
+//  Created by soulghost on 8/7/2016.
+//  Copyright © 2016 soulghost. All rights reserved.
+//
+
+#ifndef prefix_pch
+#define prefix_pch
+
+#define MAS_SHORTHAND_GLOBALS
+
+#ifdef __OBJC__
+
+/*
+ *  Frameworks
+ */
+#import "Masonry.h"
+
+#endif
+
+#define RGB(r,g,b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0]
+
+#endif
