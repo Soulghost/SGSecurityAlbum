@@ -18,7 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[SGWelcomeViewController new]];
+    self.window.rootViewController = [[SGAccountManager sharedManager] getRootViewController];
     [self.window makeKeyAndVisible];
     return YES;
 }

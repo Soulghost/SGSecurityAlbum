@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		68128B5B1D2FC89A0070BE88 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 68128B5A1D2FC89A0070BE88 /* NSString+MD5.m */; };
+		68128B601D2FCF150070BE88 /* SGAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 68128B5F1D2FCF150070BE88 /* SGAccount.m */; };
+		68128B641D2FD3320070BE88 /* SGAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 68128B631D2FD3320070BE88 /* SGAccountManager.m */; };
+		68128B6A1D2FDF0F0070BE88 /* SGRegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68128B691D2FDF0F0070BE88 /* SGRegisterView.m */; };
+		68128B6D1D2FDF9C0070BE88 /* SGRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68128B6C1D2FDF9C0070BE88 /* SGRegisterViewController.m */; };
+		68128B771D2FEA5C0070BE88 /* MBProgressHUD+SGExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 68128B721D2FEA5C0070BE88 /* MBProgressHUD+SGExtension.m */; };
+		68128B781D2FEA5C0070BE88 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 68128B731D2FEA5C0070BE88 /* MBProgressHUD.bundle */; };
+		68128B791D2FEA5C0070BE88 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 68128B751D2FEA5C0070BE88 /* MBProgressHUD.m */; };
+		68128B7C1D2FEE3A0070BE88 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68128B7B1D2FEE3A0070BE88 /* LocalAuthentication.framework */; };
 		681EBF811D2FADAB00AA2B83 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 681EBF801D2FADAB00AA2B83 /* Launch Screen.storyboard */; };
 		6857E9B11D2F909D0013E1DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6857E9B01D2F909D0013E1DC /* main.m */; };
 		6857E9B41D2F909D0013E1DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6857E9B31D2F909D0013E1DC /* AppDelegate.m */; };
@@ -26,6 +34,7 @@
 		6857EA101D2FA4120013E1DC /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6857EA041D2FA4120013E1DC /* View+MASAdditions.m */; };
 		6857EA111D2FA4120013E1DC /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6857EA071D2FA4120013E1DC /* ViewController+MASAdditions.m */; };
 		6857EA141D2FA4FA0013E1DC /* SGWelcomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6857EA131D2FA4FA0013E1DC /* SGWelcomeView.m */; };
+		68F7BF761D2FF44600F604ED /* SGAccountSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F7BF751D2FF44600F604ED /* SGAccountSet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +57,20 @@
 /* Begin PBXFileReference section */
 		68128B591D2FC89A0070BE88 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
 		68128B5A1D2FC89A0070BE88 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		68128B5E1D2FCF150070BE88 /* SGAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAccount.h; sourceTree = "<group>"; };
+		68128B5F1D2FCF150070BE88 /* SGAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGAccount.m; sourceTree = "<group>"; };
+		68128B621D2FD3320070BE88 /* SGAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAccountManager.h; sourceTree = "<group>"; };
+		68128B631D2FD3320070BE88 /* SGAccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGAccountManager.m; sourceTree = "<group>"; };
+		68128B681D2FDF0F0070BE88 /* SGRegisterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGRegisterView.h; sourceTree = "<group>"; };
+		68128B691D2FDF0F0070BE88 /* SGRegisterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGRegisterView.m; sourceTree = "<group>"; };
+		68128B6B1D2FDF9C0070BE88 /* SGRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGRegisterViewController.h; sourceTree = "<group>"; };
+		68128B6C1D2FDF9C0070BE88 /* SGRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGRegisterViewController.m; sourceTree = "<group>"; };
+		68128B711D2FEA5C0070BE88 /* MBProgressHUD+SGExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+SGExtension.h"; sourceTree = "<group>"; };
+		68128B721D2FEA5C0070BE88 /* MBProgressHUD+SGExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+SGExtension.m"; sourceTree = "<group>"; };
+		68128B731D2FEA5C0070BE88 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
+		68128B741D2FEA5C0070BE88 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		68128B751D2FEA5C0070BE88 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		68128B7B1D2FEE3A0070BE88 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		681EBF801D2FADAB00AA2B83 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		6857E9AC1D2F909D0013E1DC /* SGSecurityAlbum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SGSecurityAlbum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6857E9B01D2F909D0013E1DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -91,6 +114,8 @@
 		6857EA071D2FA4120013E1DC /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
 		6857EA121D2FA4FA0013E1DC /* SGWelcomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGWelcomeView.h; sourceTree = "<group>"; };
 		6857EA131D2FA4FA0013E1DC /* SGWelcomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGWelcomeView.m; sourceTree = "<group>"; };
+		68F7BF741D2FF44600F604ED /* SGAccountSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAccountSet.h; sourceTree = "<group>"; };
+		68F7BF751D2FF44600F604ED /* SGAccountSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGAccountSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68128B7C1D2FEE3A0070BE88 /* LocalAuthentication.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +154,82 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		68128B5C1D2FCCA50070BE88 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				68128B611D2FD3140070BE88 /* Manager */,
+				68128B5D1D2FCD390070BE88 /* Model */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		68128B5D1D2FCD390070BE88 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				68128B5E1D2FCF150070BE88 /* SGAccount.h */,
+				68128B5F1D2FCF150070BE88 /* SGAccount.m */,
+				68F7BF741D2FF44600F604ED /* SGAccountSet.h */,
+				68F7BF751D2FF44600F604ED /* SGAccountSet.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		68128B611D2FD3140070BE88 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				68128B621D2FD3320070BE88 /* SGAccountManager.h */,
+				68128B631D2FD3320070BE88 /* SGAccountManager.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		68128B651D2FDEC00070BE88 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				68128B671D2FDEE70070BE88 /* Controller */,
+				68128B661D2FDED20070BE88 /* View */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		68128B661D2FDED20070BE88 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				68128B681D2FDF0F0070BE88 /* SGRegisterView.h */,
+				68128B691D2FDF0F0070BE88 /* SGRegisterView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		68128B671D2FDEE70070BE88 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				68128B6B1D2FDF9C0070BE88 /* SGRegisterViewController.h */,
+				68128B6C1D2FDF9C0070BE88 /* SGRegisterViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		68128B6E1D2FEA5C0070BE88 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				68128B711D2FEA5C0070BE88 /* MBProgressHUD+SGExtension.h */,
+				68128B721D2FEA5C0070BE88 /* MBProgressHUD+SGExtension.m */,
+				68128B731D2FEA5C0070BE88 /* MBProgressHUD.bundle */,
+				68128B741D2FEA5C0070BE88 /* MBProgressHUD.h */,
+				68128B751D2FEA5C0070BE88 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		68128B7A1D2FEE390070BE88 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				68128B7B1D2FEE3A0070BE88 /* LocalAuthentication.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6857E9A31D2F909D0013E1DC = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +237,7 @@
 				6857E9C81D2F909D0013E1DC /* SGSecurityAlbumTests */,
 				6857E9D31D2F909E0013E1DC /* SGSecurityAlbumUITests */,
 				6857E9AD1D2F909D0013E1DC /* Products */,
+				68128B7A1D2FEE390070BE88 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,6 +254,8 @@
 		6857E9AE1D2F909D0013E1DC /* SGSecurityAlbum */ = {
 			isa = PBXGroup;
 			children = (
+				68128B651D2FDEC00070BE88 /* Register */,
+				68128B5C1D2FCCA50070BE88 /* Account */,
 				6857E9B21D2F909D0013E1DC /* AppDelegate.h */,
 				6857E9B31D2F909D0013E1DC /* AppDelegate.m */,
 				6857E9E41D2F953C0013E1DC /* WelcomePage(欢迎页) */,
@@ -229,6 +334,7 @@
 		6857E9E71D2F971E0013E1DC /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				68128B6E1D2FEA5C0070BE88 /* MBProgressHUD */,
 				68128B581D2FC8810070BE88 /* Catetory */,
 				6857E9EE1D2FA4120013E1DC /* Masonry */,
 			);
@@ -390,6 +496,7 @@
 			files = (
 				681EBF811D2FADAB00AA2B83 /* Launch Screen.storyboard in Resources */,
 				6857E9BC1D2F909D0013E1DC /* Assets.xcassets in Resources */,
+				68128B781D2FEA5C0070BE88 /* MBProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,17 +524,24 @@
 				6857EA0F1D2FA4120013E1DC /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				6857EA0D1D2FA4120013E1DC /* MASViewConstraint.m in Sources */,
 				6857EA081D2FA4120013E1DC /* MASCompositeConstraint.m in Sources */,
+				68128B6A1D2FDF0F0070BE88 /* SGRegisterView.m in Sources */,
 				6857EA0E1D2FA4120013E1DC /* NSArray+MASAdditions.m in Sources */,
 				6857E9B41D2F909D0013E1DC /* AppDelegate.m in Sources */,
+				68F7BF761D2FF44600F604ED /* SGAccountSet.m in Sources */,
 				6857E9B11D2F909D0013E1DC /* main.m in Sources */,
 				6857EA0B1D2FA4120013E1DC /* MASLayoutConstraint.m in Sources */,
 				6857E9EA1D2F98040013E1DC /* SGWelcomeViewController.m in Sources */,
 				6857EA111D2FA4120013E1DC /* ViewController+MASAdditions.m in Sources */,
+				68128B641D2FD3320070BE88 /* SGAccountManager.m in Sources */,
 				6857EA101D2FA4120013E1DC /* View+MASAdditions.m in Sources */,
 				6857EA0C1D2FA4120013E1DC /* MASViewAttribute.m in Sources */,
 				6857EA141D2FA4FA0013E1DC /* SGWelcomeView.m in Sources */,
+				68128B771D2FEA5C0070BE88 /* MBProgressHUD+SGExtension.m in Sources */,
+				68128B791D2FEA5C0070BE88 /* MBProgressHUD.m in Sources */,
 				68128B5B1D2FC89A0070BE88 /* NSString+MD5.m in Sources */,
+				68128B601D2FCF150070BE88 /* SGAccount.m in Sources */,
 				6857EA091D2FA4120013E1DC /* MASConstraint.m in Sources */,
+				68128B6D1D2FDF9C0070BE88 /* SGRegisterViewController.m in Sources */,
 				6857EA0A1D2FA4120013E1DC /* MASConstraintMaker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

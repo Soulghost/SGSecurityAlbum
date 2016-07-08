@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^SGWelcomeBlock)(SGAccount *account);
+
 @interface SGWelcomeView : UIView
+
+- (void)setWelcomeHandler:(SGWelcomeBlock)handler;
 
 @end

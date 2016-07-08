@@ -1,23 +1,27 @@
 //
-//  SGWelcomeView.m
+//  SGRegisterView.m
 //  SGSecurityAlbum
 //
 //  Created by soulghost on 8/7/2016.
 //  Copyright © 2016 soulghost. All rights reserved.
 //
 
-#import "SGWelcomeView.h"
+#import "SGRegisterView.h"
 
-@interface SGWelcomeView () <UITextFieldDelegate>
+#define PasswordFieldTag -1
+#define ConfirmFieldTag  -2
+
+@interface SGRegisterView () <UITextFieldDelegate>
 
 @property (nonatomic, weak) UIImageView *logoView;
 @property (nonatomic, weak) UILabel *logoLabel;
 @property (nonatomic, weak) UITextField *pwdFiled;
-@property (nonatomic, copy) SGWelcomeBlock handler;
+@property (nonatomic, weak) UITextField *confirmField;
+@property (nonatomic, copy) SGRegisterBlock registerHandler;
 
 @end
 
-@implementation SGWelcomeView
+@implementation SGRegisterView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
@@ -39,7 +43,7 @@
         make.centerX.equalTo(superview);
     }];
     UILabel *logoLabel = [UILabel new];
-    logoLabel.text = @"Agony";
+    logoLabel.text = @"Add Account";
     logoLabel.textColor = [UIColor brownColor];
     logoLabel.textAlignment = NSTextAlignmentCenter;
     logoLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:32];
@@ -52,8 +56,10 @@
         make.right.equalTo(superview.mas_right).offset(-20);
     }];
     UITextField *pwdFiled = [UITextField new];
+    pwdFiled.tag = PasswordFieldTag;
+    pwdFiled.clearButtonMode = UITextFieldViewModeWhileEditing;
     pwdFiled.delegate = self;
-    pwdFiled.returnKeyType = UIReturnKeyGo;
+    pwdFiled.returnKeyType = UIReturnKeyNext;
     pwdFiled.textAlignment = NSTextAlignmentCenter;
     pwdFiled.secureTextEntry = YES;
     pwdFiled.placeholder = @"Please enter your password";
@@ -66,20 +72,42 @@
         make.right.equalTo(superview).offset(-20);
         make.height.equalTo(28);
     }];
+    UITextField *confirmField = [UITextField new];
+    confirmField.tag = ConfirmFieldTag;
+    confirmField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    confirmField.delegate = self;
+    confirmField.returnKeyType = UIReturnKeyGo;
+    confirmField.textAlignment = NSTextAlignmentCenter;
+    confirmField.secureTextEntry = YES;
+    confirmField.placeholder = @"Please confirm your password";
+    confirmField.borderStyle = UITextBorderStyleRoundedRect;
+    self.confirmField = confirmField;
+    [self addSubview:confirmField];
+    [confirmField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.pwdFiled.mas_bottom).offset(10);
+        make.left.equalTo(superview).offset(20);
+        make.right.equalTo(superview).offset(-20);
+        make.height.equalTo(28);
+    }];
 }
 
-- (void)setWelcomeHandler:(SGWelcomeBlock)handler {
-    self.handler = handler;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.pwdFiled becomeFirstResponder]; 
-    });
+- (void)setHandler:(SGRegisterBlock)handler {
+    self.registerHandler = handler;
+}
+
+- (void)didMoveToSuperview {
+    [super didMoveToSuperview];
+    [self.pwdFiled becomeFirstResponder];
 }
 
 #pragma mark UITextField Delegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    if (self.handler) {
-        SGAccount *account = [[SGAccountManager sharedManager] getAccountByPwd:textField.text];
-        self.handler(account);
+    if (textField.tag == PasswordFieldTag) {
+        [self.confirmField becomeFirstResponder];
+    } else {
+        if (self.registerHandler) {
+            self.registerHandler(self.pwdFiled.text, self.confirmField.text);
+        }
     }
     return YES;
 }
