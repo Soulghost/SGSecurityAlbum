@@ -6,6 +6,7 @@
 //  Copyright © 2016 soulghost. All rights reserved.
 //
 
+#import "SGPhotoBrowserViewController.h"
 #import "SGHomeViewController.h"
 #import "SGHomeView.h"
 
@@ -72,6 +73,12 @@
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"New Folder" message:@"Please enter folder name" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
         alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
         [alertView show];
+    } else {
+        SGPhotoBrowserViewController *browser = [SGPhotoBrowserViewController new];
+        browser.rootPath = album.path;
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:browser];
+        nav.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [self presentViewController:nav animated:YES completion:nil];
     }
 }
 

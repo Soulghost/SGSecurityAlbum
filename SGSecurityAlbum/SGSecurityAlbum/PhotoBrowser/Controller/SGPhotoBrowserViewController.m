@@ -1,0 +1,141 @@
+//
+//  SGPhotoBrowserViewController.m
+//  SGSecurityAlbum
+//
+//  Created by soulghost on 9/7/2016.
+//  Copyright © 2016 soulghost. All rights reserved.
+//
+
+#import "SGPhotoBrowserViewController.h"
+#import "QBImagePickerController.h"
+
+@interface SGPhotoBrowserViewController () <QBImagePickerControllerDelegate>
+
+@property (nonatomic, strong) NSArray<MWPhoto *> *photos;
+@property (nonatomic, strong) NSArray<MWPhoto *> *thumbs;
+
+@end
+
+@implementation SGPhotoBrowserViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self commonInit];
+    [self loadFiles];
+}
+
+- (void)commonInit {
+    self.delegate = self;
+    self.title = [SGFileUtil getFileNameFromPath:self.rootPath];
+    self.displayActionButton = YES;
+    self.displayNavArrows = YES;
+    self.enableSwipeToDismiss = YES;
+    self.displaySelectionButtons = NO;
+    self.startOnGrid = YES;
+    self.enableGrid = YES;
+    self.zoomPhotosToFill = YES;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addClick)];
+}
+
+- (void)loadFiles {
+    NSFileManager *mgr = [NSFileManager defaultManager];
+    NSString *photoPath = [SGFileUtil photoPathForRootPath:self.rootPath];
+    NSString *thumbPath = [SGFileUtil thumbPathForRootPath:self.rootPath];
+    NSMutableArray *photos = @[].mutableCopy;
+    NSMutableArray *thumbs = @[].mutableCopy;
+    NSArray *fileNames = [mgr contentsOfDirectoryAtPath:photoPath error:nil];
+    for (NSUInteger i = 0; i < fileNames.count; i++) {
+        NSString *fileName = fileNames[i];
+        NSString *path = [photoPath stringByAppendingPathComponent:fileName];
+        MWPhoto *photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:path]];
+        [photos addObject:photo];
+    }
+    self.photos = photos;
+    fileNames = [mgr contentsOfDirectoryAtPath:thumbPath error:nil];
+    for (NSUInteger i = 0; i < fileNames.count; i++) {
+        NSString *fileName = fileNames[i];
+        NSString *path = [photoPath stringByAppendingPathComponent:fileName];
+        MWPhoto *thumb = [MWPhoto photoWithURL:[NSURL fileURLWithPath:path]];
+        [thumbs addObject:thumb];
+    }
+    self.thumbs = thumbs;
+    [self reloadData];
+}
+
+#pragma mark -
+#pragma mark UIBarButtonItem Action
+- (void)addClick {
+    QBImagePickerController *picker = [QBImagePickerController new];
+    picker.delegate = self;
+    picker.allowsMultipleSelection = YES;
+    picker.showsNumberOfSelectedAssets = YES;
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+#pragma mark -
+#pragma mark MWPhotoBrowser Delegate
+- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
+    return self.photos.count;
+}
+
+- (id<MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
+    if (index < self.photos.count) {
+        return self.photos[index];
+    }
+    return nil;
+}
+
+- (id<MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index {
+    if (index < self.thumbs.count) {
+        return self.thumbs[index];
+    }
+    return nil;
+}
+
+#pragma mark -
+#pragma mark QBIImagePickerController Delegate 
+- (void)qb_imagePickerController:(QBImagePickerController *)imagePickerController didFinishPickingAssets:(NSArray *)assets {
+    PHImageRequestOptions *op = [[PHImageRequestOptions alloc] init];
+    op.synchronous = YES;
+    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:imagePickerController.view];
+    [imagePickerController.view addSubview:hud];
+    hud.mode = MBProgressHUDModeAnnularDeterminate;
+    [hud showAnimated:YES];
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    NSString *dateStr = [formatter stringFromDate:[NSDate date]];
+    __block  NSInteger progressCount = 0;
+    NSInteger progressSum = assets.count * 2;
+    void (^hudProgressBlock)(NSInteger currentProgressCount) = ^(NSInteger progressCount) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            hud.progress = (double)progressCount / progressSum;
+            NSLog(@"%@/%@",@(progressCount),@(progressSum));
+            if (progressCount == progressSum) {
+                [imagePickerController dismissViewControllerAnimated:YES completion:nil];
+                [hud hideAnimated:YES];
+            }
+        });
+    };
+    for (int i = 0; i < assets.count; i++) {
+        PHAsset *asset = assets[i];
+        PHCachingImageManager *imageManager = [[PHCachingImageManager alloc] init];
+        NSString *fileName = [[NSString stringWithFormat:@"%@%@",dateStr,@(i)] MD5];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [imageManager requestImageForAsset:asset targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeAspectFill options:op resultHandler:^(UIImage *result, NSDictionary *info) {
+                [SGFileUtil savePhoto:result toRootPath:self.rootPath withName:fileName];
+                hudProgressBlock(++progressCount);
+            }];
+            [imageManager requestImageForAsset:asset targetSize:CGSizeMake(120, 120) contentMode:PHImageContentModeAspectFill options:op resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+                [SGFileUtil saveThumb:result toRootPath:self.rootPath withName:fileName];
+                hudProgressBlock(++progressCount);
+            }];
+        });
+    }
+    [self loadFiles];
+}
+
+- (void)qb_imagePickerControllerDidCancel:(QBImagePickerController *)imagePickerController {
+    [imagePickerController dismissViewControllerAnimated:YES completion:nil];
+}
+
+@end

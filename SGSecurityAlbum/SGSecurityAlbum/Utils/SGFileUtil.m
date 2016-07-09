@@ -23,6 +23,36 @@
     return [[filePath componentsSeparatedByString:@"/"] lastObject];
 }
 
++ (NSString *)photoPathForRootPath:(NSString *)rootPath {
+    return [rootPath stringByAppendingPathComponent:@"Photo"];
+}
+
++ (NSString *)thumbPathForRootPath:(NSString *)rootPath {
+    return [rootPath stringByAppendingPathComponent:@"Thumb"];
+}
+
++ (void)savePhoto:(UIImage *)image toRootPath:(NSString *)rootPath withName:(NSString *)name {
+    NSData *imageDate = UIImagePNGRepresentation(image);
+    rootPath = [self photoPathForRootPath:rootPath];
+    NSFileManager *mgr = [NSFileManager defaultManager];
+    if(![mgr fileExistsAtPath:rootPath isDirectory:nil]) {
+        [mgr createDirectoryAtPath:rootPath withIntermediateDirectories:NO attributes:nil error:nil];
+    }
+    rootPath = [rootPath stringByAppendingPathComponent:name];
+    [imageDate writeToFile:rootPath atomically:YES];
+}
+
++ (void)saveThumb:(UIImage *)image toRootPath:(NSString *)rootPath withName:(NSString *)name {
+    NSData *imageDate = UIImagePNGRepresentation(image);
+    rootPath = [self thumbPathForRootPath:rootPath];
+    NSFileManager *mgr = [NSFileManager defaultManager];
+    if(![mgr fileExistsAtPath:rootPath isDirectory:nil]) {
+        [mgr createDirectoryAtPath:rootPath withIntermediateDirectories:NO attributes:nil error:nil];
+    }
+    rootPath = [rootPath stringByAppendingPathComponent:name];
+    [imageDate writeToFile:rootPath atomically:YES];
+}
+
 - (void)setAccount:(SGAccount *)account {
     _account = account;
     _rootPath = [DocumentPath stringByAppendingPathComponent:account.password];
