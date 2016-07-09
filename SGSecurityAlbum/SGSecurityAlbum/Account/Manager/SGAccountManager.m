@@ -11,8 +11,6 @@
 #import "SGWelcomeViewController.h"
 #import "SGAccountSet.h"
 
-#define AccountPath
-
 @interface SGAccountManager ()
 
 @property (nonatomic, strong) SGAccountSet *accountSet;

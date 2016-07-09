@@ -16,9 +16,7 @@
 - (SGAccount *)getAccountByPwd:(NSString *)pwd;
 - (SGAccount *)getTouchIDAccount;
 - (UIViewController *)getRootViewController;
-- (BOOL)hasAccount;
 
 @property (nonatomic, strong) SGAccount *currentAccount;
-
 
 @end
