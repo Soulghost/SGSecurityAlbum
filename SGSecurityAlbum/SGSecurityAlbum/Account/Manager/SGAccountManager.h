@@ -18,4 +18,7 @@
 - (UIViewController *)getRootViewController;
 - (BOOL)hasAccount;
 
+@property (nonatomic, strong) SGAccount *currentAccount;
+
+
 @end

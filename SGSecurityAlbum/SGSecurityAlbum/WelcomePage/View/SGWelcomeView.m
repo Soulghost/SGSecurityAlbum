@@ -66,6 +66,8 @@
         make.right.equalTo(superview).offset(-20);
         make.height.equalTo(28);
     }];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)setWelcomeHandler:(SGWelcomeBlock)handler {
@@ -75,6 +77,20 @@
     });
 }
 
+#pragma mark Notification Callback
+- (void)keyboardShow:(NSNotification *)nof {
+    CGRect endFrame = [nof.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGFloat endY = endFrame.origin.y;
+    CGFloat deltaY = endY - CGRectGetMaxY(self.pwdFiled.frame) - 10;
+    if (deltaY < 0 && CGAffineTransformEqualToTransform(self.transform, CGAffineTransformIdentity)) {
+        self.transform = CGAffineTransformTranslate(self.transform, 0, deltaY);
+    }
+}
+
+- (void)keyboardHide:(NSNotification *)nof {
+    self.transform = CGAffineTransformIdentity;
+}
+
 #pragma mark UITextField Delegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (self.handler) {
@@ -82,6 +98,10 @@
         self.handler(account);
     }
     return YES;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

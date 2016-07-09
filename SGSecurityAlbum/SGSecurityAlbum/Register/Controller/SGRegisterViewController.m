@@ -21,15 +21,19 @@
     SGRegisterView *view = [SGRegisterView new];
     self.view = view;
     self.registerView = view;
-    WS();
-    [view setHandler:^(NSString *password, NSString *confirm) {
-        [weakSelf handleRegisterWithPassword:password confirm:confirm];
-    }];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Register";
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    WS();
+    [self.registerView setHandler:^(NSString *password, NSString *confirm) {
+        [weakSelf handleRegisterWithPassword:password confirm:confirm];
+    }];
 }
 
 - (void)handleRegisterWithPassword:(NSString *)password confirm:(NSString *)confirm {

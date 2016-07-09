@@ -91,6 +91,11 @@
     return self.accountSet.accountMap[pwd];
 }
 
+- (void)setCurrentAccount:(SGAccount *)currentAccount {
+    _currentAccount = currentAccount;
+    [SGFileUtil sharedUtil].account = _currentAccount;
+}
+
 #pragma mark Lazyload
 - (SGAccountSet *)accountSet {
     if (_accountSet == nil) {

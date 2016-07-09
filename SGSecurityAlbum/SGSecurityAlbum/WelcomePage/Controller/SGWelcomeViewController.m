@@ -6,10 +6,12 @@
 //  Copyright © 2016 soulghost. All rights reserved.
 //
 
-#import "SGWelcomeViewController.h"
-#import "SGRegisterViewController.h"
 #import <LocalAuthentication/LocalAuthentication.h>
 #import "SGWelcomeView.h"
+#import "SGWelcomeViewController.h"
+#import "SGRegisterViewController.h"
+#import "SGHomeViewController.h"
+#import "AppDelegate.h"
 
 @interface SGWelcomeViewController ()
 
@@ -33,6 +35,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [SGAccountManager  sharedManager].currentAccount = nil;
     [self handleTouchIDLogin];
 }
 
@@ -64,6 +67,12 @@
         [MBProgressHUD showError:@"Password Error"];
         return;
     }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [SGAccountManager sharedManager].currentAccount = account;
+        AppDelegate *app = [UIApplication sharedApplication].delegate;
+        app.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[SGHomeViewController new]];
+    });
+    
 }
 
 - (void)registerClick {
