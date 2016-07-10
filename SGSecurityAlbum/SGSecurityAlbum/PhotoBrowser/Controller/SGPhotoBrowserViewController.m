@@ -11,8 +11,7 @@
 
 @interface SGPhotoBrowserViewController () <QBImagePickerControllerDelegate>
 
-@property (nonatomic, strong) NSArray<MWPhoto *> *photos;
-@property (nonatomic, strong) NSArray<MWPhoto *> *thumbs;
+@property (nonatomic, strong) NSArray<SGPhotoModel *> *photoModels;
 
 @end
 
@@ -25,40 +24,34 @@
 }
 
 - (void)commonInit {
-    self.delegate = self;
+    self.numberOfPhotosPerRow = 4;
     self.title = [SGFileUtil getFileNameFromPath:self.rootPath];
-    self.displayActionButton = YES;
-    self.displayNavArrows = YES;
-    self.enableSwipeToDismiss = YES;
-    self.displaySelectionButtons = NO;
-    self.startOnGrid = YES;
-    self.enableGrid = YES;
-    self.zoomPhotosToFill = YES;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addClick)];
+    WS();
+    [self setNumberOfPhotosBlockHandler:^NSInteger{
+        return weakSelf.photoModels.count;
+    }];
+    [self setphotoAtIndexBlockHandler:^SGPhotoModel *(NSInteger index) {
+        return weakSelf.photoModels[index];
+    }];
 }
 
 - (void)loadFiles {
     NSFileManager *mgr = [NSFileManager defaultManager];
     NSString *photoPath = [SGFileUtil photoPathForRootPath:self.rootPath];
     NSString *thumbPath = [SGFileUtil thumbPathForRootPath:self.rootPath];
-    NSMutableArray *photos = @[].mutableCopy;
-    NSMutableArray *thumbs = @[].mutableCopy;
+    NSMutableArray *photoModels = @[].mutableCopy;
     NSArray *fileNames = [mgr contentsOfDirectoryAtPath:photoPath error:nil];
     for (NSUInteger i = 0; i < fileNames.count; i++) {
         NSString *fileName = fileNames[i];
-        NSString *path = [photoPath stringByAppendingPathComponent:fileName];
-        MWPhoto *photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:path]];
-        [photos addObject:photo];
+        NSURL *photoURL = [NSURL fileURLWithPath:[photoPath stringByAppendingPathComponent:fileName]];
+        NSURL *thumbURL = [NSURL fileURLWithPath:[thumbPath stringByAppendingPathComponent:fileName]];
+        SGPhotoModel *model = [SGPhotoModel new];
+        model.photoURL = photoURL;
+        model.thumbURL = thumbURL;
+        [photoModels addObject:model];
     }
-    self.photos = photos;
-    fileNames = [mgr contentsOfDirectoryAtPath:thumbPath error:nil];
-    for (NSUInteger i = 0; i < fileNames.count; i++) {
-        NSString *fileName = fileNames[i];
-        NSString *path = [photoPath stringByAppendingPathComponent:fileName];
-        MWPhoto *thumb = [MWPhoto photoWithURL:[NSURL fileURLWithPath:path]];
-        [thumbs addObject:thumb];
-    }
-    self.thumbs = thumbs;
+    self.photoModels = photoModels;
     [self reloadData];
 }
 
@@ -70,26 +63,6 @@
     picker.allowsMultipleSelection = YES;
     picker.showsNumberOfSelectedAssets = YES;
     [self presentViewController:picker animated:YES completion:nil];
-}
-
-#pragma mark -
-#pragma mark MWPhotoBrowser Delegate
-- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
-    return self.photos.count;
-}
-
-- (id<MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
-    if (index < self.photos.count) {
-        return self.photos[index];
-    }
-    return nil;
-}
-
-- (id<MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index {
-    if (index < self.thumbs.count) {
-        return self.thumbs[index];
-    }
-    return nil;
 }
 
 #pragma mark -
@@ -109,10 +82,10 @@
     void (^hudProgressBlock)(NSInteger currentProgressCount) = ^(NSInteger progressCount) {
         dispatch_async(dispatch_get_main_queue(), ^{
             hud.progress = (double)progressCount / progressSum;
-            NSLog(@"%@/%@",@(progressCount),@(progressSum));
             if (progressCount == progressSum) {
                 [imagePickerController dismissViewControllerAnimated:YES completion:nil];
                 [hud hideAnimated:YES];
+                [self loadFiles];
             }
         });
     };
@@ -131,7 +104,6 @@
             }];
         });
     }
-    [self loadFiles];
 }
 
 - (void)qb_imagePickerControllerDidCancel:(QBImagePickerController *)imagePickerController {

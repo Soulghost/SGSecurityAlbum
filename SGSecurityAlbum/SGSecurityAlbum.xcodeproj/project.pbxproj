@@ -66,6 +66,12 @@
 		682406E81D30A89700023559 /* SGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 682406E71D30A89700023559 /* SGHomeViewController.m */; };
 		682406EB1D30A8A400023559 /* SGHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 682406EA1D30A8A400023559 /* SGHomeView.m */; };
 		682406EE1D30C10200023559 /* SGHomeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 682406ED1D30C10200023559 /* SGHomeViewCell.m */; };
+		6850D73E1D322A6D0022E455 /* SGPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6850D73D1D322A6D0022E455 /* SGPhotoBrowser.m */; };
+		6850D7411D322ADE0022E455 /* SGPhotoCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6850D7401D322ADE0022E455 /* SGPhotoCollectionView.m */; };
+		6850D7441D322F7B0022E455 /* SGPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6850D7431D322F7B0022E455 /* SGPhotoModel.m */; };
+		6850D7471D3232A00022E455 /* SGPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6850D7461D3232A00022E455 /* SGPhotoCell.m */; };
+		6850D74A1D3251CD0022E455 /* SGPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6850D7491D3251CD0022E455 /* SGPhotoViewController.m */; };
+		6850D74D1D3257EC0022E455 /* SGPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6850D74C1D3257EC0022E455 /* SGPhotoView.m */; };
 		6857E9B11D2F909D0013E1DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6857E9B01D2F909D0013E1DC /* main.m */; };
 		6857E9B41D2F909D0013E1DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6857E9B31D2F909D0013E1DC /* AppDelegate.m */; };
 		6857E9BC1D2F909D0013E1DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6857E9BB1D2F909D0013E1DC /* Assets.xcassets */; };
@@ -83,6 +89,7 @@
 		6857EA101D2FA4120013E1DC /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6857EA041D2FA4120013E1DC /* View+MASAdditions.m */; };
 		6857EA111D2FA4120013E1DC /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6857EA071D2FA4120013E1DC /* ViewController+MASAdditions.m */; };
 		6857EA141D2FA4FA0013E1DC /* SGWelcomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6857EA131D2FA4FA0013E1DC /* SGWelcomeView.m */; };
+		686957871D32A0E3005B6454 /* SGImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 686957861D32A0E3005B6454 /* SGImageView.m */; };
 		68F7BF761D2FF44600F604ED /* SGAccountSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F7BF751D2FF44600F604ED /* SGAccountSet.m */; };
 /* End PBXBuildFile section */
 
@@ -223,6 +230,18 @@
 		682406EA1D30A8A400023559 /* SGHomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGHomeView.m; sourceTree = "<group>"; };
 		682406EC1D30C10200023559 /* SGHomeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGHomeViewCell.h; sourceTree = "<group>"; };
 		682406ED1D30C10200023559 /* SGHomeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGHomeViewCell.m; sourceTree = "<group>"; };
+		6850D73C1D322A6D0022E455 /* SGPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPhotoBrowser.h; sourceTree = "<group>"; };
+		6850D73D1D322A6D0022E455 /* SGPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPhotoBrowser.m; sourceTree = "<group>"; };
+		6850D73F1D322ADE0022E455 /* SGPhotoCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPhotoCollectionView.h; sourceTree = "<group>"; };
+		6850D7401D322ADE0022E455 /* SGPhotoCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPhotoCollectionView.m; sourceTree = "<group>"; };
+		6850D7421D322F7B0022E455 /* SGPhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPhotoModel.h; sourceTree = "<group>"; };
+		6850D7431D322F7B0022E455 /* SGPhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPhotoModel.m; sourceTree = "<group>"; };
+		6850D7451D3232A00022E455 /* SGPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPhotoCell.h; sourceTree = "<group>"; };
+		6850D7461D3232A00022E455 /* SGPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPhotoCell.m; sourceTree = "<group>"; };
+		6850D7481D3251CD0022E455 /* SGPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPhotoViewController.h; sourceTree = "<group>"; };
+		6850D7491D3251CD0022E455 /* SGPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPhotoViewController.m; sourceTree = "<group>"; };
+		6850D74B1D3257EC0022E455 /* SGPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPhotoView.h; sourceTree = "<group>"; };
+		6850D74C1D3257EC0022E455 /* SGPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPhotoView.m; sourceTree = "<group>"; };
 		6857E9AC1D2F909D0013E1DC /* SGSecurityAlbum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SGSecurityAlbum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6857E9B01D2F909D0013E1DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6857E9B21D2F909D0013E1DC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -265,6 +284,8 @@
 		6857EA071D2FA4120013E1DC /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
 		6857EA121D2FA4FA0013E1DC /* SGWelcomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGWelcomeView.h; sourceTree = "<group>"; };
 		6857EA131D2FA4FA0013E1DC /* SGWelcomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGWelcomeView.m; sourceTree = "<group>"; };
+		686957851D32A0E3005B6454 /* SGImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGImageView.h; sourceTree = "<group>"; };
+		686957861D32A0E3005B6454 /* SGImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGImageView.m; sourceTree = "<group>"; };
 		68F7BF741D2FF44600F604ED /* SGAccountSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAccountSet.h; sourceTree = "<group>"; };
 		68F7BF751D2FF44600F604ED /* SGAccountSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGAccountSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -592,6 +613,27 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		6850D73B1D322A0B0022E455 /* SGPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				6850D73C1D322A6D0022E455 /* SGPhotoBrowser.h */,
+				6850D73D1D322A6D0022E455 /* SGPhotoBrowser.m */,
+				6850D73F1D322ADE0022E455 /* SGPhotoCollectionView.h */,
+				6850D7401D322ADE0022E455 /* SGPhotoCollectionView.m */,
+				6850D7451D3232A00022E455 /* SGPhotoCell.h */,
+				6850D7461D3232A00022E455 /* SGPhotoCell.m */,
+				6850D7421D322F7B0022E455 /* SGPhotoModel.h */,
+				6850D7431D322F7B0022E455 /* SGPhotoModel.m */,
+				6850D7481D3251CD0022E455 /* SGPhotoViewController.h */,
+				6850D7491D3251CD0022E455 /* SGPhotoViewController.m */,
+				6850D74B1D3257EC0022E455 /* SGPhotoView.h */,
+				6850D74C1D3257EC0022E455 /* SGPhotoView.m */,
+				686957851D32A0E3005B6454 /* SGImageView.h */,
+				686957861D32A0E3005B6454 /* SGImageView.m */,
+			);
+			path = SGPhotoBrowser;
+			sourceTree = "<group>";
+		};
 		6857E9A31D2F909D0013E1DC = {
 			isa = PBXGroup;
 			children = (
@@ -616,13 +658,13 @@
 		6857E9AE1D2F909D0013E1DC /* SGSecurityAlbum */ = {
 			isa = PBXGroup;
 			children = (
+				6857E9B21D2F909D0013E1DC /* AppDelegate.h */,
+				6857E9B31D2F909D0013E1DC /* AppDelegate.m */,
 				6806EBD01D30FAA80044ED1E /* PhotoBrowser */,
 				6806EAB81D30D2750044ED1E /* Utils */,
 				682406E31D30A84F00023559 /* Home */,
 				68128B651D2FDEC00070BE88 /* Register */,
 				68128B5C1D2FCCA50070BE88 /* Account */,
-				6857E9B21D2F909D0013E1DC /* AppDelegate.h */,
-				6857E9B31D2F909D0013E1DC /* AppDelegate.m */,
 				6857E9E41D2F953C0013E1DC /* WelcomePage(欢迎页) */,
 				6857E9E71D2F971E0013E1DC /* Libs */,
 				6857E9AF1D2F909D0013E1DC /* Supporting Files */,
@@ -699,6 +741,7 @@
 		6857E9E71D2F971E0013E1DC /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				6850D73B1D322A0B0022E455 /* SGPhotoBrowser */,
 				6806EBD91D3106750044ED1E /* QBImagePicker */,
 				6806EB911D30FA120044ED1E /* SDWebImage */,
 				6806EB2A1D30F9F20044ED1E /* MWPhotoBrowser */,
@@ -911,6 +954,7 @@
 				682406EB1D30A8A400023559 /* SGHomeView.m in Sources */,
 				6806EB901D30F9F20044ED1E /* UIImage+MWPhotoBrowser.m in Sources */,
 				6806EABF1D30DEFA0044ED1E /* SGAlbum.m in Sources */,
+				6850D7411D322ADE0022E455 /* SGPhotoCollectionView.m in Sources */,
 				6857EA0E1D2FA4120013E1DC /* NSArray+MASAdditions.m in Sources */,
 				6857E9B41D2F909D0013E1DC /* AppDelegate.m in Sources */,
 				6806EBBA1D30FA120044ED1E /* SDWebImageManager.m in Sources */,
@@ -922,12 +966,15 @@
 				6806EBB31D30FA120044ED1E /* MKAnnotationView+WebCache.m in Sources */,
 				6806EBB41D30FA120044ED1E /* NSData+ImageContentType.m in Sources */,
 				6806EBCE1D30FA660044ED1E /* LICENSE.md in Sources */,
+				6850D73E1D322A6D0022E455 /* SGPhotoBrowser.m in Sources */,
 				6857EA0B1D2FA4120013E1DC /* MASLayoutConstraint.m in Sources */,
 				6857E9EA1D2F98040013E1DC /* SGWelcomeViewController.m in Sources */,
 				682406EE1D30C10200023559 /* SGHomeViewCell.m in Sources */,
+				6850D74A1D3251CD0022E455 /* SGPhotoViewController.m in Sources */,
 				6857EA111D2FA4120013E1DC /* ViewController+MASAdditions.m in Sources */,
 				68128B641D2FD3320070BE88 /* SGAccountManager.m in Sources */,
 				6806EBB91D30FA120044ED1E /* SDWebImageDownloaderOperation.m in Sources */,
+				6850D7441D322F7B0022E455 /* SGPhotoModel.m in Sources */,
 				6857EA101D2FA4120013E1DC /* View+MASAdditions.m in Sources */,
 				6806EBD51D30FD090044ED1E /* SGPhotoBrowserViewController.m in Sources */,
 				6806EBFE1D3106750044ED1E /* QBVideoIconView.m in Sources */,
@@ -938,6 +985,7 @@
 				6806EBCC1D30FA660044ED1E /* DACircularProgressView.m in Sources */,
 				6857EA0C1D2FA4120013E1DC /* MASViewAttribute.m in Sources */,
 				6857EA141D2FA4FA0013E1DC /* SGWelcomeView.m in Sources */,
+				6850D74D1D3257EC0022E455 /* SGPhotoView.m in Sources */,
 				68128B771D2FEA5C0070BE88 /* MBProgressHUD+SGExtension.m in Sources */,
 				6806EBF81D3106750044ED1E /* QBAssetCell.m in Sources */,
 				6806EBBE1D30FA120044ED1E /* UIImage+MultiFormat.m in Sources */,
@@ -948,12 +996,14 @@
 				6806EABB1D30D28A0044ED1E /* SGFileUtil.m in Sources */,
 				68128B791D2FEA5C0070BE88 /* MBProgressHUD.m in Sources */,
 				6806EBBC1D30FA120044ED1E /* UIButton+WebCache.m in Sources */,
+				6850D7471D3232A00022E455 /* SGPhotoCell.m in Sources */,
 				68128B5B1D2FC89A0070BE88 /* NSString+MD5.m in Sources */,
 				6806EBBB1D30FA120044ED1E /* SDWebImagePrefetcher.m in Sources */,
 				6806EBC21D30FA120044ED1E /* UIView+WebCacheOperation.m in Sources */,
 				68128B601D2FCF150070BE88 /* SGAccount.m in Sources */,
 				6806EBFA1D3106750044ED1E /* QBCheckmarkView.m in Sources */,
 				6806EBFF1D3106750044ED1E /* QBVideoIndicatorView.m in Sources */,
+				686957871D32A0E3005B6454 /* SGImageView.m in Sources */,
 				6857EA091D2FA4120013E1DC /* MASConstraint.m in Sources */,
 				6806EB8E1D30F9F20044ED1E /* MWTapDetectingView.m in Sources */,
 				6806EBBD1D30FA120044ED1E /* UIImage+GIF.m in Sources */,

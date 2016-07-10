@@ -76,9 +76,7 @@
     } else {
         SGPhotoBrowserViewController *browser = [SGPhotoBrowserViewController new];
         browser.rootPath = album.path;
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:browser];
-        nav.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        [self presentViewController:nav animated:YES completion:nil];
+        [self.navigationController pushViewController:browser animated:YES];
     }
 }
 

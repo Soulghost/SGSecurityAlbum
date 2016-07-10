@@ -38,7 +38,7 @@
 }
 
 - (void)saveAccountSet {
-    [NSKeyedArchiver archiveRootObject:self.accountSet toFile:self.accountPath];
+    [NSKeyedArchiver archiveRootObject:self.accountSet toFile:self.accountPath];    
 }
 
 - (BOOL)hasAccount {

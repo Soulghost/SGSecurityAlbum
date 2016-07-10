@@ -6,9 +6,9 @@
 //  Copyright © 2016 soulghost. All rights reserved.
 //
 
-#import "MWPhotoBrowser.h"
+#import "SGPhotoBrowser.h"
 
-@interface SGPhotoBrowserViewController : MWPhotoBrowser <MWPhotoBrowserDelegate>
+@interface SGPhotoBrowserViewController : SGPhotoBrowser
 
 @property (nonatomic, copy) NSString *rootPath;
 

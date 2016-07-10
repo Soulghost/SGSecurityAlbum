@@ -41,7 +41,8 @@
 
 - (void)handleTouchIDLogin {
     LAContext *context = [LAContext new];
-    if([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:nil]) {
+    BOOL hasTouchIDAccount = [[SGAccountManager sharedManager] getTouchIDAccount] != nil;
+    if(hasTouchIDAccount && [context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:nil]) {
         [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:@"Agony need your Touch ID to login" reply:^(BOOL success, NSError * _Nullable error) {
             if (success) {
                 SGAccount *account = [[SGAccountManager sharedManager] getTouchIDAccount];
@@ -63,16 +64,15 @@
 }
 
 - (void)loginWithAccount:(SGAccount *)account {
-    if (!account) {
-        [MBProgressHUD showError:@"Password Error"];
-        return;
-    }
     dispatch_async(dispatch_get_main_queue(), ^{
+        if (!account) {
+            [MBProgressHUD showError:@"Password Error"];
+            return;
+        }
         [SGAccountManager sharedManager].currentAccount = account;
         AppDelegate *app = [UIApplication sharedApplication].delegate;
         app.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[SGHomeViewController new]];
     });
-    
 }
 
 - (void)registerClick {
