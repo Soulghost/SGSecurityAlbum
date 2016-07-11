@@ -133,8 +133,8 @@
 
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView {
     self.state = SGImageViewStateOrigin;
-    CGFloat contentW = self.innerImageView.frame.size.width;
-    CGFloat contentH = self.innerImageView.frame.size.height;
+    CGFloat contentW = MAX(self.innerImageView.frame.size.width, self.bounds.size.width);
+    CGFloat contentH = MAX(self.innerImageView.frame.size.height, self.bounds.size.height);
     self.contentSize = CGSizeMake(contentW, contentH);
     self.innerImageView.center = CGPointMake(contentW * 0.5f, contentH * 0.5f);
     self.contentOffset = CGPointMake((contentW - self.bounds.size.width) * 0.5f, (contentH - self.bounds.size.height) * 0.5f);

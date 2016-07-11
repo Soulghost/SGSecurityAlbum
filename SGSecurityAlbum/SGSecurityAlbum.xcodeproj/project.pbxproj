@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6806EABB1D30D28A0044ED1E /* SGFileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6806EABA1D30D28A0044ED1E /* SGFileUtil.m */; };
 		6806EABF1D30DEFA0044ED1E /* SGAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 6806EABE1D30DEFA0044ED1E /* SGAlbum.m */; };
-		6806EAC21D30DF660044ED1E /* SGPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 6806EAC11D30DF660044ED1E /* SGPhoto.m */; };
 		6806EB871D30F9F20044ED1E /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 6806EB4F1D30F9F20044ED1E /* .gitkeep */; };
 		6806EB881D30F9F20044ED1E /* MWCaptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6806EB511D30F9F20044ED1E /* MWCaptionView.m */; };
 		6806EB891D30F9F20044ED1E /* MWGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6806EB541D30F9F20044ED1E /* MWGridCell.m */; };
@@ -115,8 +114,6 @@
 		6806EABA1D30D28A0044ED1E /* SGFileUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFileUtil.m; sourceTree = "<group>"; };
 		6806EABD1D30DEFA0044ED1E /* SGAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAlbum.h; sourceTree = "<group>"; };
 		6806EABE1D30DEFA0044ED1E /* SGAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGAlbum.m; sourceTree = "<group>"; };
-		6806EAC01D30DF660044ED1E /* SGPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPhoto.h; sourceTree = "<group>"; };
-		6806EAC11D30DF660044ED1E /* SGPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPhoto.m; sourceTree = "<group>"; };
 		6806EB4F1D30F9F20044ED1E /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		6806EB501D30F9F20044ED1E /* MWCaptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWCaptionView.h; sourceTree = "<group>"; };
 		6806EB511D30F9F20044ED1E /* MWCaptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWCaptionView.m; sourceTree = "<group>"; };
@@ -330,8 +327,6 @@
 			children = (
 				6806EABD1D30DEFA0044ED1E /* SGAlbum.h */,
 				6806EABE1D30DEFA0044ED1E /* SGAlbum.m */,
-				6806EAC01D30DF660044ED1E /* SGPhoto.h */,
-				6806EAC11D30DF660044ED1E /* SGPhoto.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -949,7 +944,6 @@
 				6857EA081D2FA4120013E1DC /* MASCompositeConstraint.m in Sources */,
 				68128B6A1D2FDF0F0070BE88 /* SGRegisterView.m in Sources */,
 				6806EB8D1D30F9F20044ED1E /* MWTapDetectingImageView.m in Sources */,
-				6806EAC21D30DF660044ED1E /* SGPhoto.m in Sources */,
 				682406E81D30A89700023559 /* SGHomeViewController.m in Sources */,
 				682406EB1D30A8A400023559 /* SGHomeView.m in Sources */,
 				6806EB901D30F9F20044ED1E /* UIImage+MWPhotoBrowser.m in Sources */,
