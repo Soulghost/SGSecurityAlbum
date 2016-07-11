@@ -54,11 +54,13 @@
     NSInteger count = browser.numberOfPhotosHandler();
     CGSize visibleSize = [UIScreen mainScreen].bounds.size;
     _pageW = visibleSize.width;
-    self.contentSize = CGSizeMake(count * visibleSize.width, 0);
     NSMutableArray *imageViews = @[].mutableCopy;
+    CGFloat imageViewWidth = visibleSize.width + PhotoGutt * 2;
+    self.contentSize = CGSizeMake(count * imageViewWidth, 0);
     for (NSUInteger i = 0; i < count; i++) {
         SGZoomingImageView *imageView = [SGZoomingImageView new];
-        imageView.frame = (CGRect){visibleSize.width * i, 0, visibleSize};
+        CGRect frame = (CGRect){imageViewWidth * i, 0, imageViewWidth, visibleSize.height};
+        imageView.frame = CGRectInset(frame, PhotoGutt, 0);
         [imageViews addObject:imageView];
         [self addSubview:imageView];
     }
@@ -68,7 +70,7 @@
 - (void)setIndex:(NSInteger)index {
     _index = index;
     CGSize visibleSize = [UIScreen mainScreen].bounds.size;
-    self.contentOffset = CGPointMake(index * visibleSize.width, 0);
+    self.contentOffset = CGPointMake(index * (visibleSize.width + PhotoGutt * 2), 0);
     [self loadImageAtIndex:index];
 }
 

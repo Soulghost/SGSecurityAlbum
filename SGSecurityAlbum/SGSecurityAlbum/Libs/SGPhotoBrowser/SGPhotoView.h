@@ -12,6 +12,8 @@
 @class SGPhotoBrowser;
 @class SGPhotoViewController;
 
+#define PhotoGutt 20
+
 typedef void(^SGPhotoViewTapHandlerBlcok)(void);
 
 @interface SGPhotoView : UIScrollView

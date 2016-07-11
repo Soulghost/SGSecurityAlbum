@@ -66,13 +66,8 @@
     self.state = SGImageViewStateOrigin;
     UIImage *image = self.innerImageView.image;
     CGFloat imageW = image.size.width;
-//    CGFloat imageH = image.size.height;
     void (^ModifyBlock)() = ^{
         self.zoomScale = imageW / self.bounds.size.width;
-//        self.innerImageView.bounds = CGRectMake(0, 0, imageW, imageH);
-//        CGFloat contentW = MAX(imageW, self.bounds.size.width);
-//        CGFloat contentH = MAX(imageH, self.bounds.size.height);
-//        self.contentSize = CGSizeMake(contentW, contentH);
         self.innerImageView.center = CGPointMake(self.contentSize.width * 0.5f, self.contentSize.height * 0.5f);
         self.contentOffset = CGPointMake((self.contentSize.width - self.bounds.size.width) * 0.5f, (self.contentSize.height - self.bounds.size.height) * 0.5f);
     };
@@ -87,7 +82,6 @@
 }
 
 - (void)toggleState:(BOOL)animated {
-    NSLog(@"%@",@(self.state));
     if (self.state == SGImageViewStateNone || self.state == SGImageViewStateFit) {
         [self scaleToOriginSize:animated];
     } else {

@@ -19,20 +19,32 @@
 
 @implementation SGPhotoViewController
 
-- (void)loadView {
-    SGPhotoView *view = [SGPhotoView new];
-    view.controller = self;
-    self.view = view;
-    self.photoView = view;
-}
+//- (void)loadView {
+//    SGPhotoView *view = [SGPhotoView new];
+//    view.controller = self;
+//    self.view = view;
+//    self.photoView = view;
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupView];
     self.automaticallyAdjustsScrollViewInsets = NO;
     WS();
     [self.photoView setSingleTapHandlerBlock:^{
         [weakSelf toggleBarState];
     }];
+}
+
+- (void)setupView {
+    SGPhotoView *photoView = [SGPhotoView new];
+    self.photoView = photoView;
+    [self.view addSubview:photoView];
+    CGFloat x = -PhotoGutt;
+    CGFloat y = 0;
+    CGFloat w = [UIScreen mainScreen].bounds.size.width + 2 * PhotoGutt;
+    CGFloat h = [UIScreen mainScreen].bounds.size.height;
+    self.photoView.frame = CGRectMake(x, y, w, h);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
