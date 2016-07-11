@@ -40,6 +40,7 @@
     CGFloat imageH = image.size.height;
     CGSize visibleSize = [UIScreen mainScreen].bounds.size;
     CGFloat scale = visibleSize.width / imageW;
+    self.maximumZoomScale = MAX(scale, 5.0f);
     imageW = visibleSize.width;
     imageH = imageH * scale;
     void (^ModifyBlock)() = ^{
@@ -65,13 +66,13 @@
     self.state = SGImageViewStateOrigin;
     UIImage *image = self.innerImageView.image;
     CGFloat imageW = image.size.width;
-    CGFloat imageH = image.size.height;
+//    CGFloat imageH = image.size.height;
     void (^ModifyBlock)() = ^{
-        self.zoomScale = 1.0f;
-        self.innerImageView.bounds = CGRectMake(0, 0, imageW, imageH);
-        CGFloat contentW = MAX(imageW, self.bounds.size.width);
-        CGFloat contentH = MAX(imageH, self.bounds.size.height);
-        self.contentSize = CGSizeMake(contentW, contentH);
+        self.zoomScale = imageW / self.bounds.size.width;
+//        self.innerImageView.bounds = CGRectMake(0, 0, imageW, imageH);
+//        CGFloat contentW = MAX(imageW, self.bounds.size.width);
+//        CGFloat contentH = MAX(imageH, self.bounds.size.height);
+//        self.contentSize = CGSizeMake(contentW, contentH);
         self.innerImageView.center = CGPointMake(self.contentSize.width * 0.5f, self.contentSize.height * 0.5f);
         self.contentOffset = CGPointMake((self.contentSize.width - self.bounds.size.width) * 0.5f, (self.contentSize.height - self.bounds.size.height) * 0.5f);
     };
@@ -86,8 +87,8 @@
 }
 
 - (void)toggleState:(BOOL)animated {
-    if (self.state == SGImageViewStateNone) return;
-    if (self.state == SGImageViewStateFit) {
+    NSLog(@"%@",@(self.state));
+    if (self.state == SGImageViewStateNone || self.state == SGImageViewStateFit) {
         [self scaleToOriginSize:animated];
     } else {
         [self scaleToFitAnimated:animated];
@@ -132,7 +133,6 @@
 }
 
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView {
-    self.state = SGImageViewStateOrigin;
     CGFloat contentW = MAX(self.innerImageView.frame.size.width, self.bounds.size.width);
     CGFloat contentH = MAX(self.innerImageView.frame.size.height, self.bounds.size.height);
     self.contentSize = CGSizeMake(contentW, contentH);
