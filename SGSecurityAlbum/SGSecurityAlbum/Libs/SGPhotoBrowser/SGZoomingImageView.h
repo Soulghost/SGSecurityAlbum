@@ -14,10 +14,14 @@ typedef NS_OPTIONS(NSInteger, SGImageViewState) {
     SGImageViewStateOrigin
 };
 
-@interface SGImageView : UIImageView
+typedef void(^SGZoomingImageViewTapHandlerBlock)(void);
+
+@interface SGZoomingImageView : UIScrollView
 
 @property (nonatomic, assign) SGImageViewState state;
+@property (nonatomic, strong) UIImageView *innerImageView;
 
+- (void)setSingleTapHandler:(SGZoomingImageViewTapHandlerBlock)handler;
 - (void)scaleToFitAnimated:(BOOL)animated;
 - (void)scaleToOriginSize:(BOOL)animated;
 - (void)toggleState:(BOOL)animated;

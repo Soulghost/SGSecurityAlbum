@@ -89,7 +89,7 @@
 		6857EA101D2FA4120013E1DC /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6857EA041D2FA4120013E1DC /* View+MASAdditions.m */; };
 		6857EA111D2FA4120013E1DC /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6857EA071D2FA4120013E1DC /* ViewController+MASAdditions.m */; };
 		6857EA141D2FA4FA0013E1DC /* SGWelcomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6857EA131D2FA4FA0013E1DC /* SGWelcomeView.m */; };
-		686957871D32A0E3005B6454 /* SGImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 686957861D32A0E3005B6454 /* SGImageView.m */; };
+		686957871D32A0E3005B6454 /* SGZoomingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 686957861D32A0E3005B6454 /* SGZoomingImageView.m */; };
 		68F7BF761D2FF44600F604ED /* SGAccountSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F7BF751D2FF44600F604ED /* SGAccountSet.m */; };
 /* End PBXBuildFile section */
 
@@ -284,8 +284,8 @@
 		6857EA071D2FA4120013E1DC /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
 		6857EA121D2FA4FA0013E1DC /* SGWelcomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGWelcomeView.h; sourceTree = "<group>"; };
 		6857EA131D2FA4FA0013E1DC /* SGWelcomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGWelcomeView.m; sourceTree = "<group>"; };
-		686957851D32A0E3005B6454 /* SGImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGImageView.h; sourceTree = "<group>"; };
-		686957861D32A0E3005B6454 /* SGImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGImageView.m; sourceTree = "<group>"; };
+		686957851D32A0E3005B6454 /* SGZoomingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGZoomingImageView.h; sourceTree = "<group>"; };
+		686957861D32A0E3005B6454 /* SGZoomingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGZoomingImageView.m; sourceTree = "<group>"; };
 		68F7BF741D2FF44600F604ED /* SGAccountSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAccountSet.h; sourceTree = "<group>"; };
 		68F7BF751D2FF44600F604ED /* SGAccountSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGAccountSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -628,8 +628,8 @@
 				6850D7491D3251CD0022E455 /* SGPhotoViewController.m */,
 				6850D74B1D3257EC0022E455 /* SGPhotoView.h */,
 				6850D74C1D3257EC0022E455 /* SGPhotoView.m */,
-				686957851D32A0E3005B6454 /* SGImageView.h */,
-				686957861D32A0E3005B6454 /* SGImageView.m */,
+				686957851D32A0E3005B6454 /* SGZoomingImageView.h */,
+				686957861D32A0E3005B6454 /* SGZoomingImageView.m */,
 			);
 			path = SGPhotoBrowser;
 			sourceTree = "<group>";
@@ -1003,7 +1003,7 @@
 				68128B601D2FCF150070BE88 /* SGAccount.m in Sources */,
 				6806EBFA1D3106750044ED1E /* QBCheckmarkView.m in Sources */,
 				6806EBFF1D3106750044ED1E /* QBVideoIndicatorView.m in Sources */,
-				686957871D32A0E3005B6454 /* SGImageView.m in Sources */,
+				686957871D32A0E3005B6454 /* SGZoomingImageView.m in Sources */,
 				6857EA091D2FA4120013E1DC /* MASConstraint.m in Sources */,
 				6806EB8E1D30F9F20044ED1E /* MWTapDetectingView.m in Sources */,
 				6806EBBD1D30FA120044ED1E /* UIImage+GIF.m in Sources */,
