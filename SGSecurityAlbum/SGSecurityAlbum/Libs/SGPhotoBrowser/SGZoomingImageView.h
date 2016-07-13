@@ -20,6 +20,7 @@ typedef void(^SGZoomingImageViewTapHandlerBlock)(void);
 
 @property (nonatomic, assign) SGImageViewState state;
 @property (nonatomic, strong) UIImageView *innerImageView;
+@property (nonatomic, assign) BOOL isOrigin;
 
 - (void)setSingleTapHandler:(SGZoomingImageViewTapHandlerBlock)handler;
 - (void)scaleToFitAnimated:(BOOL)animated;

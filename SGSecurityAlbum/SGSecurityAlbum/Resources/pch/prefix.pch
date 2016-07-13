@@ -28,6 +28,8 @@
  */
 #import "NSString+MD5.h"
 #import "MBProgressHUD+SGExtension.h"
+#import "UIImageView+WebCache.h"
+#import "UIImageView+SGExtension.h"
 /*
  *  Utils
  */

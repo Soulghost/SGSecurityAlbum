@@ -58,10 +58,14 @@
     self.contentSize = CGSizeMake(count * imageViewWidth, 0);
     for (NSUInteger i = 0; i < count; i++) {
         SGZoomingImageView *imageView = [SGZoomingImageView new];
+        SGPhotoModel *model = self.browser.photoAtIndexHandler(i);
+        [imageView.innerImageView sg_setImageWithURL:model.thumbURL];
+        imageView.isOrigin = NO;
         CGRect frame = (CGRect){imageViewWidth * i, 0, imageViewWidth, visibleSize.height};
         imageView.frame = CGRectInset(frame, PhotoGutt, 0);
         [imageViews addObject:imageView];
         [self addSubview:imageView];
+        [imageView scaleToFitAnimated:NO];
     }
     self.imageViews = imageViews;
 }
@@ -80,21 +84,23 @@
 - (void)loadImageAtIndex:(NSInteger)index {
     [self updateNavBarTitleWithIndex:index];
     NSInteger count = self.browser.numberOfPhotosHandler();
-    for (NSInteger i = index - 1; i < count && i <= index + 1; i++) {
-        if (i < 0) continue;
+    for (NSInteger i = 0; i < count; i++) {
+//        if (labs(i - index) > 2) continue;
+        SGPhotoModel *model = self.browser.photoAtIndexHandler(i);
         SGZoomingImageView *imageView = self.imageViews[i];
         if (i == index) self.currentImageView = imageView;
-        if (imageView.innerImageView.image == nil) {
-            SGPhotoModel *model = self.browser.photoAtIndexHandler(i);
-            NSURL *photoURL = model.photoURL;
-            if (![photoURL isFileURL]) {
-                [imageView.innerImageView sd_setImageWithURL:photoURL completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                    [imageView scaleToFitAnimated:NO];
-                }];
-            } else {
-                imageView.innerImageView.image = [UIImage imageWithContentsOfFile:photoURL.path];
-                [imageView scaleToFitAnimated:NO];
-            }
+        NSURL *photoURL = model.photoURL;
+        NSURL *thumbURL = model.thumbURL;
+        if (i >= index - 1 && i <= index + 1) {
+            if (imageView.isOrigin) continue;
+            [imageView.innerImageView sg_setImageWithURL:photoURL];
+            imageView.isOrigin = YES;
+            [imageView scaleToFitAnimated:NO];
+        } else {
+            if (!imageView.isOrigin) continue;
+            [imageView.innerImageView sg_setImageWithURL:thumbURL];
+            imageView.isOrigin = NO;
+            [imageView scaleToFitAnimated:NO];
         }
     }
 }
@@ -121,7 +127,7 @@
 }
 
 #pragma mark UIScrollView Delegate
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     CGFloat offsetX = scrollView.contentOffset.x;
     NSInteger index = (offsetX + _pageW * 0.5f) / _pageW;
     if (_index != index) {
@@ -129,6 +135,5 @@
         [self loadImageAtIndex:_index];
     }
 }
-
 
 @end

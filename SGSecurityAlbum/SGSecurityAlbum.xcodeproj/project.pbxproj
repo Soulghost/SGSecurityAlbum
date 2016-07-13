@@ -90,6 +90,7 @@
 		6857EA111D2FA4120013E1DC /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6857EA071D2FA4120013E1DC /* ViewController+MASAdditions.m */; };
 		6857EA141D2FA4FA0013E1DC /* SGWelcomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6857EA131D2FA4FA0013E1DC /* SGWelcomeView.m */; };
 		686957871D32A0E3005B6454 /* SGZoomingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 686957861D32A0E3005B6454 /* SGZoomingImageView.m */; };
+		68956BF61D36A7EB0014E475 /* UIImageView+SGExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 68956BF51D36A7EB0014E475 /* UIImageView+SGExtension.m */; };
 		68F5CE461D35FC3F00906271 /* SGBlockActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F5CE401D35FC3F00906271 /* SGBlockActionSheet.m */; };
 		68F5CE481D35FC3F00906271 /* UIBlockAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F5CE451D35FC3F00906271 /* UIBlockAlertView.m */; };
 		68F5CE4B1D36240E00906271 /* SGBrowserToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F5CE4A1D36240E00906271 /* SGBrowserToolBar.m */; };
@@ -292,6 +293,8 @@
 		6857EA131D2FA4FA0013E1DC /* SGWelcomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGWelcomeView.m; sourceTree = "<group>"; };
 		686957851D32A0E3005B6454 /* SGZoomingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGZoomingImageView.h; sourceTree = "<group>"; };
 		686957861D32A0E3005B6454 /* SGZoomingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGZoomingImageView.m; sourceTree = "<group>"; };
+		68956BF41D36A7EB0014E475 /* UIImageView+SGExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+SGExtension.h"; sourceTree = "<group>"; };
+		68956BF51D36A7EB0014E475 /* UIImageView+SGExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+SGExtension.m"; sourceTree = "<group>"; };
 		68F5CE3F1D35FC3F00906271 /* SGBlockActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlockActionSheet.h; sourceTree = "<group>"; };
 		68F5CE401D35FC3F00906271 /* SGBlockActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBlockActionSheet.m; sourceTree = "<group>"; };
 		68F5CE431D35FC3F00906271 /* SGUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGUIKit.h; sourceTree = "<group>"; };
@@ -519,6 +522,8 @@
 			children = (
 				68128B591D2FC89A0070BE88 /* NSString+MD5.h */,
 				68128B5A1D2FC89A0070BE88 /* NSString+MD5.m */,
+				68956BF41D36A7EB0014E475 /* UIImageView+SGExtension.h */,
+				68956BF51D36A7EB0014E475 /* UIImageView+SGExtension.m */,
 			);
 			name = Catetory;
 			path = Category;
@@ -1015,6 +1020,7 @@
 				6850D74A1D3251CD0022E455 /* SGPhotoViewController.m in Sources */,
 				6857EA111D2FA4120013E1DC /* ViewController+MASAdditions.m in Sources */,
 				68128B641D2FD3320070BE88 /* SGAccountManager.m in Sources */,
+				68956BF61D36A7EB0014E475 /* UIImageView+SGExtension.m in Sources */,
 				6806EBB91D30FA120044ED1E /* SDWebImageDownloaderOperation.m in Sources */,
 				6850D7441D322F7B0022E455 /* SGPhotoModel.m in Sources */,
 				6857EA101D2FA4120013E1DC /* View+MASAdditions.m in Sources */,
