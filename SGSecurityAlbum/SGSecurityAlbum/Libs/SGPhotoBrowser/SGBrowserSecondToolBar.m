@@ -10,12 +10,18 @@
 
 @implementation SGBrowserSecondToolBar
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        self.translucent = YES;
+        [self setupViews];
+    }
+    return self;
 }
-*/
+
+- (void)setupViews {
+    UIBarButtonItem *editBtn = [self createBarButtomItemWithImage:[UIImage imageNamed:@"BackButton"]];
+    editBtn.tag = SGBrowserToolButtonBack;
+    self.items = @[editBtn,[self createSpring]];
+}
 
 @end

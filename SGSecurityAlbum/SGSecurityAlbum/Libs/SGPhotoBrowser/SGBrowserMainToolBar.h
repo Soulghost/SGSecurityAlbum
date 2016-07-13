@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SGBlockToolBar.h"
+#import "SGBrowserToolBar.h"
 
 @interface SGBrowserMainToolBar : SGBlockToolBar
 

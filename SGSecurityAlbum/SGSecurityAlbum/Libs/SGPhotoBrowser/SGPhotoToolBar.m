@@ -33,11 +33,6 @@
     exportItem.tag = SGPhotoToolBarExportTag;
     UIBarButtonItem *spring = [self createBarButtomItemWithSystemItem:UIBarButtonSystemItemFlexibleSpace];
     self.items = @[trashItem, spring, exportItem];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        for (UIView *view in self.subviews) {
-            NSLog(@"%@ %@",NSStringFromClass([view class]),NSStringFromCGRect(view.frame));
-        }
-    });
 }
 
 @end

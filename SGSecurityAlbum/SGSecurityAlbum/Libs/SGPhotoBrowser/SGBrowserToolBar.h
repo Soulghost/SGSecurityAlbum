@@ -11,9 +11,16 @@
 #import "SGBrowserMainToolBar.h"
 #import "SGBrowserSecondToolBar.h"
 
+@class SGBrowserMainToolBar;
+@class SGBrowserSecondToolBar;
+
+#define SGBrowserToolButtonEdit -1
+#define SGBrowserToolButtonBack -2
+
 @interface SGBrowserToolBar : UIView
 
 @property (nonatomic, weak) SGBrowserMainToolBar *mainToolBar;
 @property (nonatomic, weak) SGBrowserSecondToolBar *secondToolBar;
+@property (nonatomic, assign) BOOL isEditing;
 
 @end

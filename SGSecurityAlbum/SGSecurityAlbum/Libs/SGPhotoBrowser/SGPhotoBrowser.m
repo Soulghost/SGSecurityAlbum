@@ -20,6 +20,7 @@
 @property (nonatomic, weak) SGPhotoCollectionView *collectionView;
 @property (nonatomic, assign) CGSize photoSize;
 @property (nonatomic, weak) SGBrowserToolBar *toolBar;
+@property (nonatomic, strong) NSMutableArray *selectModels;
 
 @end
 
@@ -29,7 +30,7 @@
     [super viewDidLoad];
     [self initParams];
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-    SGPhotoCollectionView *collectionView = [[SGPhotoCollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
+    SGPhotoCollectionView *collectionView = [[SGPhotoCollectionView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 44) collectionViewLayout:layout];
     self.collectionView = collectionView;
     [self.view addSubview:collectionView];
     [self setupViews];
@@ -50,6 +51,28 @@
     SGBrowserToolBar *toolBar = [[SGBrowserToolBar alloc] initWithFrame:CGRectMake(barX, barY, barW, barH)];
     self.toolBar = toolBar;
     [self.view addSubview:toolBar];
+    __weak typeof(toolBar) weakToolBar = self.toolBar;
+    [toolBar.mainToolBar setButtonActionHandlerBlock:^(UIBarButtonItem *item) {
+        switch (item.tag) {
+            case SGBrowserToolButtonEdit:
+                weakToolBar.isEditing = YES;
+                break;
+        }
+    }];
+    WS();
+    [toolBar.secondToolBar setButtonActionHandlerBlock:^(UIBarButtonItem *item) {
+        switch (item.tag) {
+            case SGBrowserToolButtonBack: {
+                weakToolBar.isEditing = NO;
+                for (NSUInteger i = 0; i < weakSelf.selectModels.count; i++) {
+                    SGPhotoModel *model = weakSelf.selectModels[i];
+                    model.isSelected = NO;
+                    [weakSelf reloadData];
+                }
+                break;
+            }
+        }
+    }];
 }
 
 - (void)checkImplementation {
@@ -81,6 +104,15 @@
 
 - (void)reloadData {
     [self.collectionView reloadData];
+}
+
+#pragma mark -
+#pragma mark Lazyload
+- (NSMutableArray *)selectModels {
+    if (_selectModels == nil) {
+        _selectModels = @[].mutableCopy;
+    }
+    return _selectModels;
 }
 
 #pragma mark -
@@ -118,18 +150,28 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.toolBar.isEditing) {
+        return;
+    }
     SGPhotoViewController *vc = [SGPhotoViewController new];
     vc.browser = self;
     vc.index = indexPath.row;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-//    NSLog(@"highlight");
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-//    NSLog(@"unhighlight");
+- (void)collectionView:(UICollectionView *)collectionView didUnhighlightItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    if (self.toolBar.isEditing) {
+        SGPhotoModel *model = self.photoAtIndexHandler(indexPath.row);
+        model.isSelected = !model.isSelected;
+        if (model.isSelected) {
+            [self.selectModels addObject:model];
+        } else {
+            [self.selectModels removeObject:model];
+        }
+        SGPhotoCell *cell = (SGPhotoCell *)[collectionView cellForItemAtIndexPath:indexPath];
+        cell.model = model;
+        return;
+    }
 }
 
 @end

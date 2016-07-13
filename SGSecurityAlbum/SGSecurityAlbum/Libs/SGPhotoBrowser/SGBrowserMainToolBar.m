@@ -18,20 +18,9 @@
     return self;
 }
 
-- (UIBarButtonItem *)createBarButtomItemWithSystemItem:(UIBarButtonSystemItem)systemItem {
-    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:systemItem target:self action:@selector(btnClick:)];
-}
-
-- (UIBarButtonItem *)createBarButtomItemWithImage:(UIImage *)image {
-    return [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(btnClick:)];
-}
-
-- (UIBarButtonItem *)createSpring {
-    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-}
-
 - (void)setupViews {
     UIBarButtonItem *editBtn = [self createBarButtomItemWithImage:[UIImage imageNamed:@"EditButton"]];
+    editBtn.tag = SGBrowserToolButtonEdit;
     self.items = @[editBtn,[self createSpring]];
 }
 

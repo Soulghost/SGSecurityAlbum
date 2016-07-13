@@ -14,5 +14,8 @@ typedef void(^SGBlockToolBarActionBlock)(UIBarButtonItem *item);
 
 - (void)setButtonActionHandlerBlock:(SGBlockToolBarActionBlock)handler;
 - (void)btnClick:(UIBarButtonItem *)sender;
+- (UIBarButtonItem *)createBarButtomItemWithSystemItem:(UIBarButtonSystemItem)systemItem;
+- (UIBarButtonItem *)createBarButtomItemWithImage:(UIImage *)image;
+- (UIBarButtonItem *)createSpring;
 
 @end
