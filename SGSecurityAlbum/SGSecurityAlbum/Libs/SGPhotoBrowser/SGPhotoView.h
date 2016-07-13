@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SGZoomingImageView.h"
 
 @class SGPhotoModel;
 @class SGPhotoBrowser;
@@ -21,6 +22,9 @@ typedef void(^SGPhotoViewTapHandlerBlcok)(void);
 @property (nonatomic, weak) SGPhotoViewController *controller;
 @property (nonatomic, weak) SGPhotoBrowser *browser;
 @property (nonatomic, assign) NSInteger index;
+@property (nonatomic, strong) SGPhotoModel *currentPhoto;
+@property (nonatomic, weak) SGZoomingImageView *currentImageView;
+
 
 - (void)setSingleTapHandlerBlock:(SGPhotoViewTapHandlerBlcok)handler;
 

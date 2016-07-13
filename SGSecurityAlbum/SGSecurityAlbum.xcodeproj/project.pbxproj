@@ -65,6 +65,7 @@
 		682406E81D30A89700023559 /* SGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 682406E71D30A89700023559 /* SGHomeViewController.m */; };
 		682406EB1D30A8A400023559 /* SGHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 682406EA1D30A8A400023559 /* SGHomeView.m */; };
 		682406EE1D30C10200023559 /* SGHomeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 682406ED1D30C10200023559 /* SGHomeViewCell.m */; };
+		684455EC1D34F2C600274378 /* SGPhotoToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 684455EB1D34F2C600274378 /* SGPhotoToolBar.m */; };
 		6850D73E1D322A6D0022E455 /* SGPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6850D73D1D322A6D0022E455 /* SGPhotoBrowser.m */; };
 		6850D7411D322ADE0022E455 /* SGPhotoCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6850D7401D322ADE0022E455 /* SGPhotoCollectionView.m */; };
 		6850D7441D322F7B0022E455 /* SGPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6850D7431D322F7B0022E455 /* SGPhotoModel.m */; };
@@ -89,6 +90,12 @@
 		6857EA111D2FA4120013E1DC /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6857EA071D2FA4120013E1DC /* ViewController+MASAdditions.m */; };
 		6857EA141D2FA4FA0013E1DC /* SGWelcomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6857EA131D2FA4FA0013E1DC /* SGWelcomeView.m */; };
 		686957871D32A0E3005B6454 /* SGZoomingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 686957861D32A0E3005B6454 /* SGZoomingImageView.m */; };
+		68F5CE461D35FC3F00906271 /* SGBlockActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F5CE401D35FC3F00906271 /* SGBlockActionSheet.m */; };
+		68F5CE481D35FC3F00906271 /* UIBlockAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F5CE451D35FC3F00906271 /* UIBlockAlertView.m */; };
+		68F5CE4B1D36240E00906271 /* SGBrowserToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F5CE4A1D36240E00906271 /* SGBrowserToolBar.m */; };
+		68F5CE4E1D3624BD00906271 /* SGBlockToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F5CE4D1D3624BD00906271 /* SGBlockToolBar.m */; };
+		68F5CE511D362FF100906271 /* SGBrowserMainToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F5CE501D362FF100906271 /* SGBrowserMainToolBar.m */; };
+		68F5CE541D36314200906271 /* SGBrowserSecondToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F5CE531D36314200906271 /* SGBrowserSecondToolBar.m */; };
 		68F7BF761D2FF44600F604ED /* SGAccountSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F7BF751D2FF44600F604ED /* SGAccountSet.m */; };
 /* End PBXBuildFile section */
 
@@ -227,6 +234,8 @@
 		682406EA1D30A8A400023559 /* SGHomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGHomeView.m; sourceTree = "<group>"; };
 		682406EC1D30C10200023559 /* SGHomeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGHomeViewCell.h; sourceTree = "<group>"; };
 		682406ED1D30C10200023559 /* SGHomeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGHomeViewCell.m; sourceTree = "<group>"; };
+		684455EA1D34F2C600274378 /* SGPhotoToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPhotoToolBar.h; sourceTree = "<group>"; };
+		684455EB1D34F2C600274378 /* SGPhotoToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPhotoToolBar.m; sourceTree = "<group>"; };
 		6850D73C1D322A6D0022E455 /* SGPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPhotoBrowser.h; sourceTree = "<group>"; };
 		6850D73D1D322A6D0022E455 /* SGPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPhotoBrowser.m; sourceTree = "<group>"; };
 		6850D73F1D322ADE0022E455 /* SGPhotoCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPhotoCollectionView.h; sourceTree = "<group>"; };
@@ -283,6 +292,19 @@
 		6857EA131D2FA4FA0013E1DC /* SGWelcomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGWelcomeView.m; sourceTree = "<group>"; };
 		686957851D32A0E3005B6454 /* SGZoomingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGZoomingImageView.h; sourceTree = "<group>"; };
 		686957861D32A0E3005B6454 /* SGZoomingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGZoomingImageView.m; sourceTree = "<group>"; };
+		68F5CE3F1D35FC3F00906271 /* SGBlockActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlockActionSheet.h; sourceTree = "<group>"; };
+		68F5CE401D35FC3F00906271 /* SGBlockActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBlockActionSheet.m; sourceTree = "<group>"; };
+		68F5CE431D35FC3F00906271 /* SGUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGUIKit.h; sourceTree = "<group>"; };
+		68F5CE441D35FC3F00906271 /* UIBlockAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBlockAlertView.h; sourceTree = "<group>"; };
+		68F5CE451D35FC3F00906271 /* UIBlockAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBlockAlertView.m; sourceTree = "<group>"; };
+		68F5CE491D36240E00906271 /* SGBrowserToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBrowserToolBar.h; sourceTree = "<group>"; };
+		68F5CE4A1D36240E00906271 /* SGBrowserToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBrowserToolBar.m; sourceTree = "<group>"; };
+		68F5CE4C1D3624BD00906271 /* SGBlockToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlockToolBar.h; sourceTree = "<group>"; };
+		68F5CE4D1D3624BD00906271 /* SGBlockToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBlockToolBar.m; sourceTree = "<group>"; };
+		68F5CE4F1D362FF100906271 /* SGBrowserMainToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBrowserMainToolBar.h; sourceTree = "<group>"; };
+		68F5CE501D362FF100906271 /* SGBrowserMainToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBrowserMainToolBar.m; sourceTree = "<group>"; };
+		68F5CE521D36314200906271 /* SGBrowserSecondToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBrowserSecondToolBar.h; sourceTree = "<group>"; };
+		68F5CE531D36314200906271 /* SGBrowserSecondToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBrowserSecondToolBar.m; sourceTree = "<group>"; };
 		68F7BF741D2FF44600F604ED /* SGAccountSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAccountSet.h; sourceTree = "<group>"; };
 		68F7BF751D2FF44600F604ED /* SGAccountSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGAccountSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -611,8 +633,17 @@
 		6850D73B1D322A0B0022E455 /* SGPhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				68F5CE3E1D35FC3F00906271 /* SGUIKit */,
 				6850D73C1D322A6D0022E455 /* SGPhotoBrowser.h */,
 				6850D73D1D322A6D0022E455 /* SGPhotoBrowser.m */,
+				68F5CE4C1D3624BD00906271 /* SGBlockToolBar.h */,
+				68F5CE4D1D3624BD00906271 /* SGBlockToolBar.m */,
+				68F5CE491D36240E00906271 /* SGBrowserToolBar.h */,
+				68F5CE4A1D36240E00906271 /* SGBrowserToolBar.m */,
+				68F5CE4F1D362FF100906271 /* SGBrowserMainToolBar.h */,
+				68F5CE501D362FF100906271 /* SGBrowserMainToolBar.m */,
+				68F5CE521D36314200906271 /* SGBrowserSecondToolBar.h */,
+				68F5CE531D36314200906271 /* SGBrowserSecondToolBar.m */,
 				6850D73F1D322ADE0022E455 /* SGPhotoCollectionView.h */,
 				6850D7401D322ADE0022E455 /* SGPhotoCollectionView.m */,
 				6850D7451D3232A00022E455 /* SGPhotoCell.h */,
@@ -625,6 +656,8 @@
 				6850D74C1D3257EC0022E455 /* SGPhotoView.m */,
 				686957851D32A0E3005B6454 /* SGZoomingImageView.h */,
 				686957861D32A0E3005B6454 /* SGZoomingImageView.m */,
+				684455EA1D34F2C600274378 /* SGPhotoToolBar.h */,
+				684455EB1D34F2C600274378 /* SGPhotoToolBar.m */,
 			);
 			path = SGPhotoBrowser;
 			sourceTree = "<group>";
@@ -787,6 +820,18 @@
 			path = Masonry;
 			sourceTree = "<group>";
 		};
+		68F5CE3E1D35FC3F00906271 /* SGUIKit */ = {
+			isa = PBXGroup;
+			children = (
+				68F5CE431D35FC3F00906271 /* SGUIKit.h */,
+				68F5CE3F1D35FC3F00906271 /* SGBlockActionSheet.h */,
+				68F5CE401D35FC3F00906271 /* SGBlockActionSheet.m */,
+				68F5CE441D35FC3F00906271 /* UIBlockAlertView.h */,
+				68F5CE451D35FC3F00906271 /* UIBlockAlertView.m */,
+			);
+			path = SGUIKit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -936,6 +981,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68F5CE541D36314200906271 /* SGBrowserSecondToolBar.m in Sources */,
 				6806EBC01D30FA120044ED1E /* UIImageView+HighlightedWebCache.m in Sources */,
 				6806EBF71D3106750044ED1E /* QBAlbumsViewController.m in Sources */,
 				6806EBF91D3106750044ED1E /* QBAssetsViewController.m in Sources */,
@@ -957,7 +1003,9 @@
 				6857E9B11D2F909D0013E1DC /* main.m in Sources */,
 				6806EB8C1D30F9F20044ED1E /* MWPhotoBrowser.m in Sources */,
 				6806EBFD1D3106750044ED1E /* QBSlomoIconView.m in Sources */,
+				68F5CE481D35FC3F00906271 /* UIBlockAlertView.m in Sources */,
 				6806EBB31D30FA120044ED1E /* MKAnnotationView+WebCache.m in Sources */,
+				68F5CE4E1D3624BD00906271 /* SGBlockToolBar.m in Sources */,
 				6806EBB41D30FA120044ED1E /* NSData+ImageContentType.m in Sources */,
 				6806EBCE1D30FA660044ED1E /* LICENSE.md in Sources */,
 				6850D73E1D322A6D0022E455 /* SGPhotoBrowser.m in Sources */,
@@ -1000,6 +1048,8 @@
 				686957871D32A0E3005B6454 /* SGZoomingImageView.m in Sources */,
 				6857EA091D2FA4120013E1DC /* MASConstraint.m in Sources */,
 				6806EB8E1D30F9F20044ED1E /* MWTapDetectingView.m in Sources */,
+				68F5CE511D362FF100906271 /* SGBrowserMainToolBar.m in Sources */,
+				684455EC1D34F2C600274378 /* SGPhotoToolBar.m in Sources */,
 				6806EBBD1D30FA120044ED1E /* UIImage+GIF.m in Sources */,
 				6806EBCD1D30FA660044ED1E /* DALabeledCircularProgressView.m in Sources */,
 				6806EBCF1D30FA660044ED1E /* README.md in Sources */,
@@ -1008,6 +1058,8 @@
 				6857EA0A1D2FA4120013E1DC /* MASConstraintMaker.m in Sources */,
 				6806EB881D30F9F20044ED1E /* MWCaptionView.m in Sources */,
 				6806EBB61D30FA120044ED1E /* SDWebImageCompat.m in Sources */,
+				68F5CE461D35FC3F00906271 /* SGBlockActionSheet.m in Sources */,
+				68F5CE4B1D36240E00906271 /* SGBrowserToolBar.m in Sources */,
 				6806EBB51D30FA120044ED1E /* SDImageCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

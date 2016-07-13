@@ -78,7 +78,6 @@
     } else {
         ModifyBlock();
     }
-    
 }
 
 - (void)toggleState:(BOOL)animated {

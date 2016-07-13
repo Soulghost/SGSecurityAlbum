@@ -11,6 +11,7 @@
 
 typedef SGPhotoModel * (^SGPhotoBrowserDataSourcePhotoBlock)(NSInteger index);
 typedef NSInteger (^SGPhotoBrowserDataSourceNumberBlock)(void);
+typedef void(^SGPhotoBrowserReloadRequestBlock)(void);
 
 @interface SGPhotoBrowser : UIViewController
 
@@ -18,9 +19,12 @@ typedef NSInteger (^SGPhotoBrowserDataSourceNumberBlock)(void);
 @property (nonatomic, assign) CGFloat margin;
 @property (nonatomic, copy, readonly) SGPhotoBrowserDataSourceNumberBlock numberOfPhotosHandler;
 @property (nonatomic, copy, readonly) SGPhotoBrowserDataSourcePhotoBlock photoAtIndexHandler;
+@property (nonatomic, copy, readonly) SGPhotoBrowserReloadRequestBlock reloadHandler;
 
-- (void)setNumberOfPhotosBlockHandler:(SGPhotoBrowserDataSourceNumberBlock)handler;
-- (void)setphotoAtIndexBlockHandler:(SGPhotoBrowserDataSourcePhotoBlock)handler;
+
+- (void)setNumberOfPhotosHandlerBlock:(SGPhotoBrowserDataSourceNumberBlock)handler;
+- (void)setphotoAtIndexHandlerBlock:(SGPhotoBrowserDataSourcePhotoBlock)handler;
+- (void)setReloadHandlerBlock:(SGPhotoBrowserReloadRequestBlock)handler;
 - (void)reloadData;
 
 @end

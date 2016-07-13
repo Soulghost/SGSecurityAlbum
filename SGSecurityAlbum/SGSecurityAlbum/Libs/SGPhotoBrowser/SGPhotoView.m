@@ -21,7 +21,6 @@
 @property (nonatomic, copy) SGPhotoViewTapHandlerBlcok singleTapHandler;
 @property (nonatomic, weak) UIImageView *imageView;
 @property (nonatomic, strong) NSArray<SGZoomingImageView *> *imageViews;
-@property (nonatomic, weak) SGZoomingImageView *currentImageView;
 @property (nonatomic, assign) CGPoint currentImageViewOffset;
 
 @end
@@ -53,9 +52,9 @@
     _browser = browser;
     NSInteger count = browser.numberOfPhotosHandler();
     CGSize visibleSize = [UIScreen mainScreen].bounds.size;
-    _pageW = visibleSize.width;
     NSMutableArray *imageViews = @[].mutableCopy;
     CGFloat imageViewWidth = visibleSize.width + PhotoGutt * 2;
+    _pageW = imageViewWidth;
     self.contentSize = CGSizeMake(count * imageViewWidth, 0);
     for (NSUInteger i = 0; i < count; i++) {
         SGZoomingImageView *imageView = [SGZoomingImageView new];
@@ -115,6 +114,10 @@
 
 - (void)setSingleTapHandlerBlock:(SGPhotoViewTapHandlerBlcok)handler {
     self.singleTapHandler = handler;
+}
+
+- (SGPhotoModel *)currentPhoto {
+    return self.browser.photoAtIndexHandler(_index);
 }
 
 #pragma mark UIScrollView Delegate

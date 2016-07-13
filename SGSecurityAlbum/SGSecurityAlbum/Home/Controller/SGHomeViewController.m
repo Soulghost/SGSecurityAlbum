@@ -9,6 +9,7 @@
 #import "SGPhotoBrowserViewController.h"
 #import "SGHomeViewController.h"
 #import "SGHomeView.h"
+#import "AppDelegate.h"
 
 @interface SGHomeViewController () <UICollectionViewDelegateFlowLayout, UIAlertViewDelegate>
 
@@ -37,6 +38,12 @@
     }];
     self.homeView = view;
     [self.view addSubview:view];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(logout)];
+}
+
+- (void)logout {
+    AppDelegate *app = [UIApplication sharedApplication].delegate;
+    app.window.rootViewController = [[SGAccountManager sharedManager] getRootViewController];
 }
 
 - (void)loadFiles {

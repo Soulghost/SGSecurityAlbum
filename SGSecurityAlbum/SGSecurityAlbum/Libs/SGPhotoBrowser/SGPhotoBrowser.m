@@ -11,6 +11,7 @@
 #import "SGPhotoModel.h"
 #import "SGPhotoCell.h"
 #import "SGPhotoViewController.h"
+#import "SGBrowserToolBar.h"
 
 @interface SGPhotoBrowser () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout> {
     CGFloat _margin, _gutter;
@@ -18,6 +19,7 @@
 
 @property (nonatomic, weak) SGPhotoCollectionView *collectionView;
 @property (nonatomic, assign) CGSize photoSize;
+@property (nonatomic, weak) SGBrowserToolBar *toolBar;
 
 @end
 
@@ -27,9 +29,10 @@
     [super viewDidLoad];
     [self initParams];
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-    SGPhotoCollectionView *collectionView = [[SGPhotoCollectionView alloc] initWithFrame:(CGRect){0, 0, [UIScreen mainScreen].bounds.size} collectionViewLayout:layout];
+    SGPhotoCollectionView *collectionView = [[SGPhotoCollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
     self.collectionView = collectionView;
     [self.view addSubview:collectionView];
+    [self setupViews];
 }
 
 - (void)initParams {
@@ -37,6 +40,16 @@
     _gutter = 1;
     self.numberOfPhotosPerRow = 3;
     self.margin = 2;
+}
+
+- (void)setupViews {
+    CGFloat barW = self.view.bounds.size.width;
+    CGFloat barH = 44;
+    CGFloat barX = 0;
+    CGFloat barY = self.view.bounds.size.height - barH;
+    SGBrowserToolBar *toolBar = [[SGBrowserToolBar alloc] initWithFrame:CGRectMake(barX, barY, barW, barH)];
+    self.toolBar = toolBar;
+    [self.view addSubview:toolBar];
 }
 
 - (void)checkImplementation {
@@ -47,14 +60,18 @@
     }
 }
 
-- (void)setphotoAtIndexBlockHandler:(SGPhotoBrowserDataSourcePhotoBlock)handler {
+- (void)setphotoAtIndexHandlerBlock:(SGPhotoBrowserDataSourcePhotoBlock)handler {
     _photoAtIndexHandler = handler;
     [self checkImplementation];
 }
 
-- (void)setNumberOfPhotosBlockHandler:(SGPhotoBrowserDataSourceNumberBlock)handler {
+- (void)setNumberOfPhotosHandlerBlock:(SGPhotoBrowserDataSourceNumberBlock)handler {
     _numberOfPhotosHandler = handler;
     [self checkImplementation];
+}
+
+- (void)setReloadHandlerBlock:(SGPhotoBrowserReloadRequestBlock)handler {
+    _reloadHandler = handler;
 }
 
 - (void)setNumberOfPhotosPerRow:(NSInteger)numberOfPhotosPerRow {
@@ -105,6 +122,14 @@
     vc.browser = self;
     vc.index = indexPath.row;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+//    NSLog(@"highlight");
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+//    NSLog(@"unhighlight");
 }
 
 @end

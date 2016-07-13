@@ -20,6 +20,7 @@
 - (void)commonInit {
     self.backgroundColor = [UIColor whiteColor];
     self.alwaysBounceVertical = YES;
+    self.allowsMultipleSelection = YES;
 }
 
 @end

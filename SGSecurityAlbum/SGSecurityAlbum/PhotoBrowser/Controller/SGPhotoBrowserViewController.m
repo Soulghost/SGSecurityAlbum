@@ -28,11 +28,14 @@
     self.title = [SGFileUtil getFileNameFromPath:self.rootPath];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addClick)];
     WS();
-    [self setNumberOfPhotosBlockHandler:^NSInteger{
+    [self setNumberOfPhotosHandlerBlock:^NSInteger{
         return weakSelf.photoModels.count;
     }];
-    [self setphotoAtIndexBlockHandler:^SGPhotoModel *(NSInteger index) {
+    [self setphotoAtIndexHandlerBlock:^SGPhotoModel *(NSInteger index) {
         return weakSelf.photoModels[index];
+    }];
+    [self setReloadHandlerBlock:^{
+        [weakSelf loadFiles];
     }];
 }
 
@@ -78,6 +81,7 @@
     formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
     NSString *dateStr = [formatter stringFromDate:[NSDate date]];
     __block  NSInteger progressCount = 0;
+    NSMutableArray *importAssets = @[].mutableCopy;
     NSInteger progressSum = assets.count * 2;
     void (^hudProgressBlock)(NSInteger currentProgressCount) = ^(NSInteger progressCount) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -86,15 +90,20 @@
                 [imagePickerController dismissViewControllerAnimated:YES completion:nil];
                 [hud hideAnimated:YES];
                 [self loadFiles];
+                [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+                    [PHAssetChangeRequest deleteAssets:importAssets];
+                } completionHandler:nil];
             }
         });
     };
     for (int i = 0; i < assets.count; i++) {
         PHAsset *asset = assets[i];
+        [importAssets addObject:asset];
         PHCachingImageManager *imageManager = [[PHCachingImageManager alloc] init];
         NSString *fileName = [[NSString stringWithFormat:@"%@%@",dateStr,@(i)] MD5];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [imageManager requestImageForAsset:asset targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeAspectFill options:op resultHandler:^(UIImage *result, NSDictionary *info) {
+                
                 [SGFileUtil savePhoto:result toRootPath:self.rootPath withName:fileName];
                 hudProgressBlock(++progressCount);
             }];
