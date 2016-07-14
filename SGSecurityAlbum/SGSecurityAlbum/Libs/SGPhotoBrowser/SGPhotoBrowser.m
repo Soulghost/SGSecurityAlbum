@@ -211,6 +211,14 @@
     return self.numberOfPhotosHandler();
 }
 
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSAssert(self.photoAtIndexHandler != nil, @"you must implement 'photoAtIndexHandler' block to provide photos for the browser.");
+    SGPhotoModel *model = self.photoAtIndexHandler(indexPath.row);
+    SGPhotoCell *cell = [SGPhotoCell cellWithCollectionView:collectionView forIndexPaht:indexPath];
+    cell.model = model;
+    return cell;
+}
+
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake(_margin, _margin, _margin, _margin);
 }
@@ -230,14 +238,6 @@
 
 #pragma mark -
 #pragma mark UICollectionView Delegate (FlowLayout)
-- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSAssert(self.photoAtIndexHandler != nil, @"you must implement 'photoAtIndexHandler' block to provide photos for the browser.");
-    SGPhotoModel *model = self.photoAtIndexHandler(indexPath.row);
-    SGPhotoCell *cell = [SGPhotoCell cellWithCollectionView:collectionView forIndexPaht:indexPath];
-    cell.model = model;
-    return cell;
-}
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (self.toolBar.isEditing) {
         return;
