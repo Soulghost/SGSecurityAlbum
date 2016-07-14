@@ -87,7 +87,7 @@
 
 #pragma mark ToolBar Action
 - (void)trashAction {
-    [[[SGBlockActionSheet alloc] initWithTitle:@"Please Confirm" callback:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+    [[[SGBlockActionSheet alloc] initWithTitle:@"Please Confirm Delete" callback:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
         if (buttonIndex == 0) {
             [[NSFileManager defaultManager] removeItemAtPath:self.photoView.currentPhoto.photoURL.path error:nil];
             [[NSFileManager defaultManager] removeItemAtPath:self.photoView.currentPhoto.thumbURL.path error:nil];
@@ -100,7 +100,7 @@
 }
 
 - (void)exportAction {
-    [[[SGBlockActionSheet alloc] initWithTitle:@"To Where" callback:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+    [[[SGBlockActionSheet alloc] initWithTitle:@"Save To Where" callback:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
         if (buttonIndex == 1) {
             ALAssetsLibrary *lib = [ALAssetsLibrary new];
             UIImage *image = self.photoView.currentImageView.innerImageView.image;

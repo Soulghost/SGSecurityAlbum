@@ -12,6 +12,8 @@
 #import "SGPhotoCell.h"
 #import "SGPhotoViewController.h"
 #import "SGBrowserToolBar.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+#import "SDWebImageManager.h"
 
 @interface SGPhotoBrowser () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout> {
     CGFloat _margin, _gutter;
@@ -71,8 +73,75 @@
                 }
                 break;
             }
+            case SGBrowserToolButtonAction: {
+                [weakSelf handleBatchSave];
+                break;
+            }
+            case SGBrowserToolButtonTrash: {
+                
+                break;
+            }
         }
     }];
+}
+
+- (void)handleBatchSave {
+    NSInteger count = self.selectModels.count;
+    if (count == 0) {
+        [MBProgressHUD showError:@"Select Images Before Save"];
+        return;
+    }
+    __block NSInteger currentCount = 0;
+    ALAssetsLibrary *lib = [ALAssetsLibrary new];
+    NSBlockOperation *lastOp = nil;
+    NSMutableArray<NSBlockOperation *> *ops = @[].mutableCopy;
+    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    hud.removeFromSuperViewOnHide = YES;
+    hud.mode = MBProgressHUDModeAnnularDeterminate;
+    hud.label.text = [NSString stringWithFormat:@"Saving %@/%@",@(currentCount),@(count)];
+    [hud showAnimated:YES];
+    [self.navigationController.view addSubview:hud];
+    void (^opCompletionBlock)() = ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            currentCount++;
+            hud.progress = (double)currentCount / count;
+            hud.label.text = [NSString stringWithFormat:@"Saving %@/%@",@(currentCount),@(count)];
+            if (currentCount == count) {
+                [hud hideAnimated:YES afterDelay:0.25f];
+            }
+        });
+    };
+    for (NSUInteger i = 0; i < count; i++) {
+        SGPhotoModel *model = self.selectModels[i];
+        NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
+            __block BOOL finish = NO;
+            NSURL *url = model.photoURL;
+            if (![url isFileURL]) {
+                [[SDWebImageManager sharedManager] downloadImageWithURL:url options:SDWebImageDownloaderHighPriority|SDWebImageDownloaderUseNSURLCache progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                    [lib writeImageToSavedPhotosAlbum:image.CGImage metadata:nil completionBlock:^(NSURL *assetURL, NSError *error) {
+                        opCompletionBlock();
+                        finish = YES;
+                    }];
+                }];
+            } else {
+                UIImage *image = [UIImage imageWithContentsOfFile:url.path];
+                [lib writeImageToSavedPhotosAlbum:image.CGImage metadata:nil completionBlock:^(NSURL *assetURL, NSError *error) {
+                    opCompletionBlock();
+                    finish = YES;
+                }];
+            }
+            while (!finish);
+        }];
+        if (lastOp != nil) {
+            [op addDependency:lastOp];
+        }
+        lastOp = op;
+        [ops addObject:op];
+    }
+    NSOperationQueue *queue = [NSOperationQueue new];
+    for (NSUInteger i = 0; i < ops.count; i++) {
+        [queue addOperation:ops[i]];
+    }
 }
 
 - (void)checkImplementation {

@@ -21,7 +21,11 @@
 - (void)setupViews {
     UIBarButtonItem *editBtn = [self createBarButtomItemWithImage:[UIImage imageNamed:@"BackButton"]];
     editBtn.tag = SGBrowserToolButtonBack;
-    self.items = @[editBtn,[self createSpring]];
+    UIBarButtonItem *actionBtn = [self createBarButtomItemWithSystemItem:UIBarButtonSystemItemAction];
+    actionBtn.tag = SGBrowserToolButtonAction;
+    UIBarButtonItem *trashBtn = [self createBarButtomItemWithSystemItem:UIBarButtonSystemItemTrash];
+    trashBtn.tag = SGBrowserToolButtonTrash;
+    self.items = @[editBtn,[self createSpring],actionBtn,[self createSpring],trashBtn];
 }
 
 @end

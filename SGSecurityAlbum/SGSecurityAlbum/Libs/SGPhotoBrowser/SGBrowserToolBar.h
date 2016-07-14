@@ -16,6 +16,8 @@
 
 #define SGBrowserToolButtonEdit -1
 #define SGBrowserToolButtonBack -2
+#define SGBrowserToolButtonAction -3
+#define SGBrowserToolButtonTrash -4
 
 @interface SGBrowserToolBar : UIView
 
