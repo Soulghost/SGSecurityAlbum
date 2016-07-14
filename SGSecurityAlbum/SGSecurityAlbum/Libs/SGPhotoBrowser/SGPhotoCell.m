@@ -62,7 +62,6 @@
         UIImageView *imageView = [UIImageView new];
         imageView.contentMode = UIViewContentModeScaleAspectFill;
         imageView.clipsToBounds = YES;
-        imageView.userInteractionEnabled = YES;
         self.imageView = imageView;
         [self.contentView addSubview:imageView];
         SGPhotoCellMaskView *selectMaskView = [[SGPhotoCellMaskView alloc] initWithFrame:self.contentView.bounds];
