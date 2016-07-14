@@ -16,6 +16,13 @@
 
 @implementation SGBlockToolBar
 
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        self.backgroundColor = [UIColor whiteColor];
+    }
+    return self;
+}
+
 - (void)setButtonActionHandlerBlock:(SGBlockToolBarActionBlock)handler {
     self.actionHandler = handler;
 }

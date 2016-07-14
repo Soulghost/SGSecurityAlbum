@@ -14,6 +14,7 @@
 #import "SGBrowserToolBar.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "SDWebImageManager.h"
+#import "SGUIKit.h"
 
 @interface SGPhotoBrowser () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout> {
     CGFloat _margin, _gutter;
@@ -74,11 +75,17 @@
                 break;
             }
             case SGBrowserToolButtonAction: {
-                [weakSelf handleBatchSave];
+                [[[SGBlockActionSheet alloc] initWithTitle:@"Save To Where" callback:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+                    switch (buttonIndex) {
+                        case 1:
+                            [weakSelf handleBatchSave];
+                            break;
+                    }
+                } cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitlesArray:@[@"Photo Library"]] showInView:self.view];
                 break;
             }
             case SGBrowserToolButtonTrash: {
-                
+                [weakSelf handleBatchDelete];
                 break;
             }
         }
@@ -142,6 +149,20 @@
     for (NSUInteger i = 0; i < ops.count; i++) {
         [queue addOperation:ops[i]];
     }
+}
+
+- (void)handleBatchDelete {
+    NSInteger count = self.selectModels.count;
+    if (count == 0) {
+        [MBProgressHUD showError:@"Select Images Before Delete"];
+        return;
+    }
+    NSFileManager *mgr = [NSFileManager defaultManager];
+    for (NSUInteger i = 0; i < count; i++) {
+        SGPhotoModel *model = self.selectModels[i];
+        [mgr removeItemAtPath:model.photoURL.path error:nil];
+    }
+    self.reloadHandler();
 }
 
 - (void)checkImplementation {

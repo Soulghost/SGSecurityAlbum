@@ -26,6 +26,7 @@
 }
 
 - (void)commonInit {
+    self.backgroundColor = [UIColor whiteColor];
     self.outFrame = (CGRect){-self.bounds.size.width, 0, self.bounds.size};
     self.frontFrame = self.bounds;
     self.backFrame = (CGRect){self.bounds.size.width, 0, self.bounds.size};
