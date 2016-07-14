@@ -43,7 +43,6 @@
     _margin = 0;
     _gutter = 1;
     self.numberOfPhotosPerRow = 3;
-    self.margin = 2;
 }
 
 - (void)setupViews {
