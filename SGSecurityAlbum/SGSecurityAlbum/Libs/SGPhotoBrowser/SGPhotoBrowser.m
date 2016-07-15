@@ -84,7 +84,11 @@
                 break;
             }
             case SGBrowserToolButtonTrash: {
-                [weakSelf handleBatchDelete];
+                [[[SGBlockActionSheet alloc] initWithTitle:@"Please Confirm Delete" callback:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+                    if (buttonIndex == 0) {
+                        [weakSelf handleBatchDelete];
+                    }
+                } cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitlesArray:nil] showInView:self.view];
                 break;
             }
         }
