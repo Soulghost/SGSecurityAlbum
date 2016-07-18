@@ -8,6 +8,7 @@ Open source security album for iOS.
 - import photos from photo library and auto delete them.
 - batch save and delete
 - memory optimizing when browser the origin photo.
+- test1
 
 ## ScreenShots
 <p>

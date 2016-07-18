@@ -49,7 +49,7 @@
     CGSize visibleSize = [UIScreen mainScreen].bounds.size;
     NSMutableArray *imageViews = @[].mutableCopy;
     CGFloat imageViewWidth = visibleSize.width + PhotoGutt * 2;
-    _pageW = imageViewWidth - PhotoGutt;
+    _pageW = imageViewWidth;
     self.contentSize = CGSizeMake(count * imageViewWidth, 0);
     for (NSUInteger i = 0; i < count; i++) {
         SGZoomingImageView *imageView = [SGZoomingImageView new];
@@ -67,8 +67,7 @@
 
 - (void)setIndex:(NSInteger)index {
     _index = index;
-    CGSize visibleSize = [UIScreen mainScreen].bounds.size;
-    self.contentOffset = CGPointMake(index * (visibleSize.width + PhotoGutt * 2), 0);
+    self.contentOffset = CGPointMake(index * _pageW, 0);
     [self loadImageAtIndex:index];
 }
 
@@ -80,7 +79,6 @@
     [self updateNavBarTitleWithIndex:index];
     NSInteger count = self.browser.numberOfPhotosHandler();
     for (NSInteger i = 0; i < count; i++) {
-//        if (labs(i - index) > 2) continue;
         SGPhotoModel *model = self.browser.photoAtIndexHandler(i);
         SGZoomingImageView *imageView = self.imageViews[i];
         if (i == index) {

@@ -242,16 +242,6 @@
 
 #pragma mark -
 #pragma mark UICollectionView Delegate (FlowLayout)
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.toolBar.isEditing) {
-        return;
-    }
-    SGPhotoViewController *vc = [SGPhotoViewController new];
-    vc.browser = self;
-    vc.index = indexPath.row;
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
 - (void)collectionView:(UICollectionView *)collectionView didUnhighlightItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     if (self.toolBar.isEditing) {
         SGPhotoModel *model = self.photoAtIndexHandler(indexPath.row);
@@ -265,6 +255,10 @@
         cell.model = model;
         return;
     }
+    SGPhotoViewController *vc = [SGPhotoViewController new];
+    vc.browser = self;
+    vc.index = indexPath.row;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end
