@@ -40,7 +40,6 @@
     CGFloat imageH = image.size.height;
     CGSize visibleSize = [UIScreen mainScreen].bounds.size;
     CGFloat scale = visibleSize.width / imageW;
-    self.maximumZoomScale = MAX(scale, 5.0f);
     imageW = visibleSize.width;
     imageH = imageH * scale;
     void (^ModifyBlock)() = ^{
@@ -62,12 +61,21 @@
     }
 }
 
+- (void)scaleToFitIfNeededAnimated:(BOOL)animated {
+    if (self.state != SGImageViewStateFit) {
+        [self scaleToFitAnimated:animated];
+    }
+}
+
 - (void)scaleToOriginSize:(BOOL)animated {
     self.state = SGImageViewStateOrigin;
     UIImage *image = self.innerImageView.image;
     CGFloat imageW = image.size.width;
+    CGFloat scale = imageW / self.bounds.size.width;
+    if (scale <= 1.0f) scale = 2.0f;
+    self.maximumZoomScale = scale;
     void (^ModifyBlock)() = ^{
-        self.zoomScale = imageW / self.bounds.size.width;
+        self.zoomScale = scale;
         self.innerImageView.center = CGPointMake(self.contentSize.width * 0.5f, self.contentSize.height * 0.5f);
         self.contentOffset = CGPointMake((self.contentSize.width - self.bounds.size.width) * 0.5f, (self.contentSize.height - self.bounds.size.height) * 0.5f);
     };

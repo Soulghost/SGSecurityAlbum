@@ -19,7 +19,6 @@
 }
 
 @property (nonatomic, copy) SGPhotoViewTapHandlerBlcok singleTapHandler;
-@property (nonatomic, weak) UIImageView *imageView;
 @property (nonatomic, strong) NSArray<SGZoomingImageView *> *imageViews;
 @property (nonatomic, assign) CGPoint currentImageViewOffset;
 
@@ -38,9 +37,6 @@
     self.backgroundColor = [UIColor blackColor];
     self.pagingEnabled = YES;
     self.delegate = self;
-    UIImageView *imageView = [UIImageView new];
-    self.imageView = imageView;
-    [self insertSubview:imageView atIndex:0];
 }
 
 - (void)handleDoubleTap {
@@ -54,7 +50,7 @@
     CGSize visibleSize = [UIScreen mainScreen].bounds.size;
     NSMutableArray *imageViews = @[].mutableCopy;
     CGFloat imageViewWidth = visibleSize.width + PhotoGutt * 2;
-    _pageW = imageViewWidth;
+    _pageW = imageViewWidth - PhotoGutt;
     self.contentSize = CGSizeMake(count * imageViewWidth, 0);
     for (NSUInteger i = 0; i < count; i++) {
         SGZoomingImageView *imageView = [SGZoomingImageView new];
@@ -88,7 +84,11 @@
 //        if (labs(i - index) > 2) continue;
         SGPhotoModel *model = self.browser.photoAtIndexHandler(i);
         SGZoomingImageView *imageView = self.imageViews[i];
-        if (i == index) self.currentImageView = imageView;
+        if (i == index) {
+            self.currentImageView = imageView;
+        } else {
+            [imageView scaleToFitIfNeededAnimated:NO];
+        }
         NSURL *photoURL = model.photoURL;
         NSURL *thumbURL = model.thumbURL;
         if (i >= index - 1 && i <= index + 1) {

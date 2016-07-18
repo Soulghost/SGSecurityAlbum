@@ -38,6 +38,8 @@
     SGPhotoView *photoView = [SGPhotoView new];
     self.photoView = photoView;
     self.photoView.controller = self;
+    self.photoView.browser = self.browser;
+    self.photoView.index = self.index;
     [self.view addSubview:photoView];
     CGFloat x = -PhotoGutt;
     CGFloat y = 0;
@@ -66,23 +68,13 @@
     }];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.photoView.browser = self.browser;
-    self.photoView.index = self.index;
-}
-
 - (void)toggleBarState {
     self.isBarHidden = !self.isBarHidden;
-    [self setNeedsStatusBarAppearanceUpdate];
+    [[UIApplication sharedApplication] setStatusBarHidden:self.isBarHidden withAnimation:NO];
     [self.navigationController setNavigationBarHidden:self.isBarHidden animated:YES];
     [UIView animateWithDuration:0.35 animations:^{
         self.toolBar.alpha = self.isBarHidden ? 0 : 1.0f;
     }];
-}
-
-- (BOOL)prefersStatusBarHidden {
-    return self.isBarHidden;
 }
 
 #pragma mark ToolBar Action
