@@ -20,7 +20,6 @@
 
 @property (nonatomic, copy) SGPhotoViewTapHandlerBlcok singleTapHandler;
 @property (nonatomic, strong) NSArray<SGZoomingImageView *> *imageViews;
-@property (nonatomic, assign) CGPoint currentImageViewOffset;
 
 @end
 
