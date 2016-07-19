@@ -13,6 +13,7 @@
 }
 
 @property (nonatomic, copy) SGZoomingImageViewTapHandlerBlock singleTapHandlerBlock;
+@property (nonatomic, assign) CGPoint currentTouchPoint;
 
 @end
 
@@ -74,18 +75,11 @@
     CGFloat scale = imageW / self.bounds.size.width;
     if (scale <= 1.0f) scale = 2.0f;
     self.maximumZoomScale = scale;
-    void (^ModifyBlock)() = ^{
-        self.zoomScale = scale;
-        self.innerImageView.center = CGPointMake(self.contentSize.width * 0.5f, self.contentSize.height * 0.5f);
-        self.contentOffset = CGPointMake((self.contentSize.width - self.bounds.size.width) * 0.5f, (self.contentSize.height - self.bounds.size.height) * 0.5f);
-    };
-    if (animated) {
-        [UIView animateWithDuration:0.3 animations:^{
-            ModifyBlock();
-        }];
-    } else {
-        ModifyBlock();
-    }
+    CGFloat destScale = scale;
+    CGFloat xSize = self.bounds.size.width / destScale;
+    CGFloat ySize = self.bounds.size.height / destScale;
+    CGRect zoomRect = CGRectMake(self.currentTouchPoint.x - xSize * 0.5f, self.currentTouchPoint.y - ySize * 0.5f, xSize, ySize);
+    [self zoomToRect:zoomRect animated:animated];
 }
 
 - (void)toggleState:(BOOL)animated {
@@ -102,6 +96,8 @@
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
+    CGPoint touchPt = [touch locationInView:self.innerImageView];
+    self.currentTouchPoint = touchPt;
     NSInteger tapCount = touch.tapCount;
     switch (tapCount) {
         case 1:
@@ -134,11 +130,21 @@
 }
 
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView {
-    CGFloat contentW = MAX(self.innerImageView.frame.size.width, self.bounds.size.width);
-    CGFloat contentH = MAX(self.innerImageView.frame.size.height, self.bounds.size.height);
-    self.contentSize = CGSizeMake(contentW, contentH);
-    self.innerImageView.center = CGPointMake(contentW * 0.5f, contentH * 0.5f);
-    self.contentOffset = CGPointMake((contentW - self.bounds.size.width) * 0.5f, (contentH - self.bounds.size.height) * 0.5f);
+    CGSize boundsSize = self.bounds.size;
+    CGRect frameToCenter = self.innerImageView.frame;
+    if (frameToCenter.size.width < boundsSize.width) {
+        frameToCenter.origin.x = floorf((boundsSize.width - frameToCenter.size.width) * 0.5f);
+    } else {
+        frameToCenter.origin.x = 0;
+    }
+    if (frameToCenter.size.height < boundsSize.height) {
+        frameToCenter.origin.y = floorf((boundsSize.height - frameToCenter.size.height) * 0.5f);
+    } else {
+        frameToCenter.origin.y = 0;
+    }
+    if (!CGRectEqualToRect(self.innerImageView.frame, frameToCenter)) {
+        self.innerImageView.frame = frameToCenter;
+    }
 }
 
 @end
