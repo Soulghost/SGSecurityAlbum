@@ -35,17 +35,16 @@
 }
 
 - (void)setupView {
-    SGPhotoView *photoView = [SGPhotoView new];
+    CGFloat x = -PhotoGutt;
+    CGFloat y = 0;
+    CGFloat w = self.view.bounds.size.width + 2 * PhotoGutt;
+    CGFloat h = self.view.bounds.size.height;
+    SGPhotoView *photoView = [[SGPhotoView alloc] initWithFrame:CGRectMake(x, y, w, h)];
     self.photoView = photoView;
     self.photoView.controller = self;
     self.photoView.browser = self.browser;
     self.photoView.index = self.index;
     [self.view addSubview:photoView];
-    CGFloat x = -PhotoGutt;
-    CGFloat y = 0;
-    CGFloat w = self.view.bounds.size.width + 2 * PhotoGutt;
-    CGFloat h = self.view.bounds.size.height;
-    self.photoView.frame = CGRectMake(x, y, w, h);
     CGFloat barW = self.view.bounds.size.width;
     CGFloat barH = 44;
     CGFloat barX = 0;

@@ -46,9 +46,8 @@
 - (void)setBrowser:(SGPhotoBrowser *)browser {
     _browser = browser;
     NSInteger count = browser.numberOfPhotosHandler();
-    CGSize visibleSize = [UIScreen mainScreen].bounds.size;
     NSMutableArray *imageViews = @[].mutableCopy;
-    CGFloat imageViewWidth = visibleSize.width + PhotoGutt * 2;
+    CGFloat imageViewWidth = self.bounds.size.width;
     _pageW = imageViewWidth;
     self.contentSize = CGSizeMake(count * imageViewWidth, 0);
     for (NSUInteger i = 0; i < count; i++) {
@@ -56,7 +55,7 @@
         SGPhotoModel *model = self.browser.photoAtIndexHandler(i);
         [imageView.innerImageView sg_setImageWithURL:model.thumbURL];
         imageView.isOrigin = NO;
-        CGRect frame = (CGRect){imageViewWidth * i, 0, imageViewWidth, visibleSize.height};
+        CGRect frame = (CGRect){imageViewWidth * i, 0, imageViewWidth, self.bounds.size.height};
         imageView.frame = CGRectInset(frame, PhotoGutt, 0);
         [imageViews addObject:imageView];
         [self addSubview:imageView];
