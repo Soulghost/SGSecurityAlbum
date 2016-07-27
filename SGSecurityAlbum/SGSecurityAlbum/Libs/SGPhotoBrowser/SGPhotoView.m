@@ -20,6 +20,7 @@
 
 @property (nonatomic, copy) SGPhotoViewTapHandlerBlcok singleTapHandler;
 @property (nonatomic, strong) NSArray<SGZoomingImageView *> *imageViews;
+@property (nonatomic, assign) NSInteger titleIndex;
 
 @end
 
@@ -75,7 +76,7 @@
 }
 
 - (void)loadImageAtIndex:(NSInteger)index {
-    [self updateNavBarTitleWithIndex:index];
+    self.titleIndex = index;
     NSInteger count = self.browser.numberOfPhotosHandler();
     for (NSInteger i = 0; i < count; i++) {
         SGPhotoModel *model = self.browser.photoAtIndexHandler(i);
@@ -122,6 +123,12 @@
     return self.browser.photoAtIndexHandler(_index);
 }
 
+- (void)setTitleIndex:(NSInteger)titleIndex {
+    if (_titleIndex == titleIndex) return;
+    _titleIndex = titleIndex;
+    [self updateNavBarTitleWithIndex:titleIndex];
+}
+
 #pragma mark UIScrollView Delegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     CGFloat offsetX = scrollView.contentOffset.x;
@@ -130,6 +137,11 @@
         _index = index;
         [self loadImageAtIndex:_index];
     }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat offsetX = scrollView.contentOffset.x;
+    self.titleIndex = (offsetX + _pageW * 0.5f) / _pageW;
 }
 
 @end

@@ -35,21 +35,13 @@
 }
 
 - (void)setupView {
-    CGFloat x = -PhotoGutt;
-    CGFloat y = 0;
-    CGFloat w = self.view.bounds.size.width + 2 * PhotoGutt;
-    CGFloat h = self.view.bounds.size.height;
-    SGPhotoView *photoView = [[SGPhotoView alloc] initWithFrame:CGRectMake(x, y, w, h)];
+    SGPhotoView *photoView = [[SGPhotoView alloc] initWithFrame:[self getPhotoViewFrame]];
     self.photoView = photoView;
     self.photoView.controller = self;
     self.photoView.browser = self.browser;
     self.photoView.index = self.index;
     [self.view addSubview:photoView];
-    CGFloat barW = self.view.bounds.size.width;
-    CGFloat barH = 44;
-    CGFloat barX = 0;
-    CGFloat barY = self.view.bounds.size.height - barH;
-    SGPhotoToolBar *tooBar = [[SGPhotoToolBar alloc] initWithFrame:CGRectMake(barX, barY, barW, barH)];
+    SGPhotoToolBar *tooBar = [[SGPhotoToolBar alloc] initWithFrame:[self getBarFrame]];
     self.toolBar = tooBar;
     [self.view addSubview:tooBar];
     WS();
@@ -65,6 +57,27 @@
                 break;
         }
     }];
+}
+
+- (void)layoutViews {
+    self.photoView.frame = [self getPhotoViewFrame];
+    self.toolBar.frame = [self getBarFrame];
+}
+
+- (CGRect)getPhotoViewFrame {
+    CGFloat x = -PhotoGutt;
+    CGFloat y = 0;
+    CGFloat w = self.view.bounds.size.width + 2 * PhotoGutt;
+    CGFloat h = self.view.bounds.size.height;
+    return CGRectMake(x, y, w, h);
+}
+
+- (CGRect)getBarFrame {
+    CGFloat barW = self.view.bounds.size.width;
+    CGFloat barH = 44;
+    CGFloat barX = 0;
+    CGFloat barY = self.view.bounds.size.height - barH;
+    return CGRectMake(barX, barY, barW, barH);
 }
 
 - (void)toggleBarState {

@@ -27,9 +27,6 @@
 
 - (void)commonInit {
     self.backgroundColor = [UIColor whiteColor];
-    self.outFrame = (CGRect){-self.bounds.size.width, 0, self.bounds.size};
-    self.frontFrame = self.bounds;
-    self.backFrame = (CGRect){self.bounds.size.width, 0, self.bounds.size};
     SGBrowserMainToolBar *mainToolBar = [[SGBrowserMainToolBar alloc] initWithFrame:self.frontFrame];
     self.mainToolBar = mainToolBar;
     [self addSubview:mainToolBar];
@@ -66,6 +63,14 @@
             self.secondToolBar.frame = self.backFrame;
         }];
     }
+}
+
+- (void)setFrame:(CGRect)frame {
+    [super setFrame:frame];
+    self.outFrame = (CGRect){-self.bounds.size.width, 0, self.bounds.size};
+    self.frontFrame = self.bounds;
+    self.backFrame = (CGRect){self.bounds.size.width, 0, self.bounds.size};
+    [self setIsEditing:_isEditing];
 }
 
 @end

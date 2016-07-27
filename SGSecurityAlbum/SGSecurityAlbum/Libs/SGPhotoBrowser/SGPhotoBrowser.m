@@ -33,10 +33,16 @@
     [super viewDidLoad];
     [self initParams];
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-    SGPhotoCollectionView *collectionView = [[SGPhotoCollectionView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 44) collectionViewLayout:layout];
+    SGPhotoCollectionView *collectionView = [[SGPhotoCollectionView alloc] initWithFrame:[self getCollectionViewFrame] collectionViewLayout:layout];
     self.collectionView = collectionView;
     [self.view addSubview:collectionView];
     [self setupViews];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationDidChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self layoutViews];
 }
 
 - (void)initParams {
@@ -46,12 +52,9 @@
 }
 
 - (void)setupViews {
-    CGFloat barW = self.view.bounds.size.width;
-    CGFloat barH = 44;
-    CGFloat barX = 0;
-    CGFloat barY = self.view.bounds.size.height - barH;
-    SGBrowserToolBar *toolBar = [[SGBrowserToolBar alloc] initWithFrame:CGRectMake(barX, barY, barW, barH)];
+    SGBrowserToolBar *toolBar = [[SGBrowserToolBar alloc] initWithFrame:[self getToobarFrame]];
     self.toolBar = toolBar;
+    [self layoutViews];
     [self.view addSubview:toolBar];
     __weak typeof(toolBar) weakToolBar = self.toolBar;
     [toolBar.mainToolBar setButtonActionHandlerBlock:^(UIBarButtonItem *item) {
@@ -93,6 +96,25 @@
             }
         }
     }];
+}
+
+#pragma mark -
+#pragma mark Layout
+- (CGRect)getCollectionViewFrame {
+    return CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 44);
+}
+
+- (CGRect)getToobarFrame {
+    CGFloat barW = self.view.bounds.size.width;
+    CGFloat barH = 44;
+    CGFloat barX = 0;
+    CGFloat barY = self.view.bounds.size.height - barH;
+    return CGRectMake(barX, barY, barW, barH);
+}
+
+- (void)layoutViews {
+    self.collectionView.frame = [self getCollectionViewFrame];
+    self.toolBar.frame = [self getToobarFrame];
 }
 
 - (void)handleBatchSave {
@@ -208,6 +230,13 @@
     return _selectModels;
 }
 
+#pragma mark - 
+#pragma mark Rotate
+- (void)orientationDidChanged:(UIInterfaceOrientation)orientation {
+    NSLog(@"%@",NSStringFromCGRect(self.view.bounds));
+    [self layoutViews];
+}
+
 #pragma mark -
 #pragma mark UICollectionView DataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -259,6 +288,12 @@
     vc.browser = self;
     vc.index = indexPath.row;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark -
+#pragma mark dealloc
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

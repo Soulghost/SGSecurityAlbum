@@ -65,7 +65,6 @@
 		682406E81D30A89700023559 /* SGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 682406E71D30A89700023559 /* SGHomeViewController.m */; };
 		682406EB1D30A8A400023559 /* SGHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 682406EA1D30A8A400023559 /* SGHomeView.m */; };
 		682406EE1D30C10200023559 /* SGHomeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 682406ED1D30C10200023559 /* SGHomeViewCell.m */; };
-		684383421D376F5B00129F1B /* SGPhotoUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 684383411D376F5B00129F1B /* SGPhotoUtil.m */; };
 		684455EC1D34F2C600274378 /* SGPhotoToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 684455EB1D34F2C600274378 /* SGPhotoToolBar.m */; };
 		6850D73E1D322A6D0022E455 /* SGPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6850D73D1D322A6D0022E455 /* SGPhotoBrowser.m */; };
 		6850D7411D322ADE0022E455 /* SGPhotoCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6850D7401D322ADE0022E455 /* SGPhotoCollectionView.m */; };
@@ -236,8 +235,6 @@
 		682406EA1D30A8A400023559 /* SGHomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGHomeView.m; sourceTree = "<group>"; };
 		682406EC1D30C10200023559 /* SGHomeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGHomeViewCell.h; sourceTree = "<group>"; };
 		682406ED1D30C10200023559 /* SGHomeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGHomeViewCell.m; sourceTree = "<group>"; };
-		684383401D376F5B00129F1B /* SGPhotoUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPhotoUtil.h; sourceTree = "<group>"; };
-		684383411D376F5B00129F1B /* SGPhotoUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPhotoUtil.m; sourceTree = "<group>"; };
 		684455EA1D34F2C600274378 /* SGPhotoToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPhotoToolBar.h; sourceTree = "<group>"; };
 		684455EB1D34F2C600274378 /* SGPhotoToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPhotoToolBar.m; sourceTree = "<group>"; };
 		6850D73C1D322A6D0022E455 /* SGPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPhotoBrowser.h; sourceTree = "<group>"; };
@@ -638,19 +635,9 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		6843833F1D376F4400129F1B /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				684383401D376F5B00129F1B /* SGPhotoUtil.h */,
-				684383411D376F5B00129F1B /* SGPhotoUtil.m */,
-			);
-			path = Util;
-			sourceTree = "<group>";
-		};
 		6850D73B1D322A0B0022E455 /* SGPhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
-				6843833F1D376F4400129F1B /* Util */,
 				68F5CE3E1D35FC3F00906271 /* SGUIKit */,
 				6850D73C1D322A6D0022E455 /* SGPhotoBrowser.h */,
 				6850D73D1D322A6D0022E455 /* SGPhotoBrowser.m */,
@@ -1069,7 +1056,6 @@
 				6806EB8E1D30F9F20044ED1E /* MWTapDetectingView.m in Sources */,
 				68F5CE511D362FF100906271 /* SGBrowserMainToolBar.m in Sources */,
 				684455EC1D34F2C600274378 /* SGPhotoToolBar.m in Sources */,
-				684383421D376F5B00129F1B /* SGPhotoUtil.m in Sources */,
 				6806EBBD1D30FA120044ED1E /* UIImage+GIF.m in Sources */,
 				6806EBCD1D30FA660044ED1E /* DALabeledCircularProgressView.m in Sources */,
 				6806EBCF1D30FA660044ED1E /* README.md in Sources */,
@@ -1170,7 +1156,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1209,7 +1195,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1222,7 +1208,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = SGSecurityAlbum/Resources/pch/prefix.pch;
 				INFOPLIST_FILE = SGSecurityAlbum/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.soulghost.SGSecurityAlbum;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1235,7 +1221,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = SGSecurityAlbum/Resources/pch/prefix.pch;
 				INFOPLIST_FILE = SGSecurityAlbum/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.soulghost.SGSecurityAlbum;
 				PRODUCT_NAME = "$(TARGET_NAME)";
