@@ -32,6 +32,7 @@
     [self.photoView setSingleTapHandlerBlock:^{
         [weakSelf toggleBarState];
     }];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationDidChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
 - (void)setupView {
@@ -61,6 +62,7 @@
 
 - (void)layoutViews {
     self.photoView.frame = [self getPhotoViewFrame];
+    [self.photoView layoutImageViews];
     self.toolBar.frame = [self getBarFrame];
 }
 
@@ -89,7 +91,7 @@
     }];
 }
 
-#pragma mark ToolBar Action
+#pragma mark - ToolBar Action
 - (void)trashAction {
     [[[SGBlockActionSheet alloc] initWithTitle:@"Please Confirm Delete" callback:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
         if (buttonIndex == 0) {
@@ -115,6 +117,11 @@
             }];
         }
     } cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitlesArray:@[@"Photo Library"]] showInView:self.view];
+}
+
+#pragma mark - dealloc 
+- (void)orientationDidChanged:(UIDeviceOrientation)orientation {
+    [self layoutViews];
 }
 
 @end

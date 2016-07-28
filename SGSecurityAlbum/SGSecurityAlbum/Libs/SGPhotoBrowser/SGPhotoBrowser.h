@@ -27,5 +27,5 @@ typedef void(^SGPhotoBrowserReloadRequestBlock)(void);
 
 @end
 
-#define isLandScape() ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeLeft) || \
-                      ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeRight)
+#define isLandScape() (([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeLeft) || \
+                      ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeRight))

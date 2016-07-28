@@ -48,21 +48,33 @@
     _browser = browser;
     NSInteger count = browser.numberOfPhotosHandler();
     NSMutableArray *imageViews = @[].mutableCopy;
-    CGFloat imageViewWidth = self.bounds.size.width;
-    _pageW = imageViewWidth;
-    self.contentSize = CGSizeMake(count * imageViewWidth, 0);
     for (NSUInteger i = 0; i < count; i++) {
         SGZoomingImageView *imageView = [SGZoomingImageView new];
         SGPhotoModel *model = self.browser.photoAtIndexHandler(i);
-        [imageView.innerImageView sg_setImageWithURL:model.thumbURL];
+        [imageView.innerImageView sg_setImageWithURL:model.thumbURL model:model];
         imageView.isOrigin = NO;
-        CGRect frame = (CGRect){imageViewWidth * i, 0, imageViewWidth, self.bounds.size.height};
-        imageView.frame = CGRectInset(frame, PhotoGutt, 0);
         [imageViews addObject:imageView];
         [self addSubview:imageView];
         [imageView scaleToFitAnimated:NO];
     }
     self.imageViews = imageViews;
+    [self layoutImageViews];
+}
+
+- (void)layoutImageViews {
+    NSInteger count = self.browser.numberOfPhotosHandler();
+    CGFloat imageViewWidth = self.bounds.size.width;
+    _pageW = imageViewWidth;
+    self.contentSize = CGSizeMake(count * imageViewWidth, 0);
+    for (NSUInteger i = 0; i < self.imageViews.count; i++) {
+        SGZoomingImageView *imageView = self.imageViews[i];
+        imageView.isOrigin = NO;
+        CGRect frame = (CGRect){imageViewWidth * i, 0, imageViewWidth, self.bounds.size.height};
+        imageView.frame = CGRectInset(frame, PhotoGutt, 0);
+        [self addSubview:imageView];
+        [imageView scaleToFitAnimated:NO];
+    }
+    self.contentOffset = CGPointMake(self.index * _pageW, 0);
 }
 
 - (void)setIndex:(NSInteger)index {
@@ -90,12 +102,12 @@
         NSURL *thumbURL = model.thumbURL;
         if (i >= index - 1 && i <= index + 1) {
             if (imageView.isOrigin) continue;
-            [imageView.innerImageView sg_setImageWithURL:photoURL];
+            [imageView.innerImageView sg_setImageWithURL:photoURL model:model];
             imageView.isOrigin = YES;
             [imageView scaleToFitAnimated:NO];
         } else {
             if (!imageView.isOrigin) continue;
-            [imageView.innerImageView sg_setImageWithURL:thumbURL];
+            [imageView.innerImageView sg_setImageWithURL:thumbURL model:model];
             imageView.isOrigin = NO;
             [imageView scaleToFitAnimated:NO];
         }

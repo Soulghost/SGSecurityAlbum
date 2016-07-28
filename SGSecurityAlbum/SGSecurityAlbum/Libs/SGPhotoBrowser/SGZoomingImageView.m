@@ -8,6 +8,7 @@
 
 #import "SGZoomingImageView.h"
 #import "SGPhotoBrowser.h"
+#import "UIImageView+SGExtension.h"
 
 @interface SGZoomingImageView () <UIScrollViewDelegate> {
     NSTimeInterval _animationDuration;
@@ -40,8 +41,9 @@
     UIImage *image = self.innerImageView.image;
     CGFloat imageW = image.size.width;
     CGFloat imageH = image.size.height;
+    if (imageW == 0 || imageH == 0) return;
     CGSize visibleSize = self.bounds.size;
-    if (isLandScape()) {
+    if (!isLandScape()) {
         CGFloat scale = visibleSize.width / imageW;
         imageW = visibleSize.width;
         imageH = imageH * scale;
@@ -133,7 +135,7 @@
 #pragma mark -
 #pragma mark UIScrollView Delegate
 - (nullable UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView; {
-    return self.innerImageView;
+    return self.innerImageView.hud == nil ? self.innerImageView : nil;
 }
 
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView {

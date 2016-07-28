@@ -217,7 +217,7 @@
                     }
                     
                     BOOL cacheOnDisk = !(options & SDWebImageCacheMemoryOnly);
-#warning 为何缓存后不必回调？
+//#warning 为何缓存后不必回调？
                     if (options & SDWebImageRefreshCached && image && !downloadedImage) {
                         // Image refresh hit the NSURLCache cache, do not call the completion block
                     }

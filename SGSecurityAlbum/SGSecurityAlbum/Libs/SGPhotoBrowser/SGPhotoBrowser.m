@@ -15,6 +15,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "SDWebImageManager.h"
 #import "SGUIKit.h"
+#import "SDWebImagePrefetcher.h"
 
 @interface SGPhotoBrowser () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout> {
     CGFloat _margin, _gutter;
@@ -40,8 +41,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationDidChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     [self layoutViews];
 }
 
@@ -49,6 +50,7 @@
     _margin = 0;
     _gutter = 1;
     self.numberOfPhotosPerRow = 3;
+    [SDWebImagePrefetcher sharedImagePrefetcher].maxConcurrentDownloads = 6;
 }
 
 - (void)setupViews {
@@ -115,6 +117,7 @@
 - (void)layoutViews {
     self.collectionView.frame = [self getCollectionViewFrame];
     self.toolBar.frame = [self getToobarFrame];
+    [self.collectionView reloadData];
 }
 
 - (void)handleBatchSave {
@@ -186,6 +189,7 @@
     for (NSUInteger i = 0; i < count; i++) {
         SGPhotoModel *model = self.selectModels[i];
         [mgr removeItemAtPath:model.photoURL.path error:nil];
+        [mgr removeItemAtPath:model.thumbURL.path error:nil];
     }
     self.reloadHandler();
 }
@@ -233,7 +237,6 @@
 #pragma mark - 
 #pragma mark Rotate
 - (void)orientationDidChanged:(UIInterfaceOrientation)orientation {
-    NSLog(@"%@",NSStringFromCGRect(self.view.bounds));
     [self layoutViews];
 }
 

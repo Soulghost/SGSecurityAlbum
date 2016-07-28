@@ -26,5 +26,6 @@ typedef void(^SGPhotoViewTapHandlerBlcok)(void);
 @property (nonatomic, weak) SGZoomingImageView *currentImageView;
 
 - (void)setSingleTapHandlerBlock:(SGPhotoViewTapHandlerBlcok)handler;
+- (void)layoutImageViews;
 
 @end

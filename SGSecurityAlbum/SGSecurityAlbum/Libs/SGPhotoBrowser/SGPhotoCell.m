@@ -77,7 +77,7 @@
     if ([thumbURL isFileURL]) {
         self.imageView.image = [UIImage imageWithContentsOfFile:thumbURL.path];
     } else {
-        [self.imageView sd_setImageWithURL:thumbURL];
+        [self.imageView sg_setImageWithURL:thumbURL model:model];
     }
     self.sg_select = model.isSelected;
 }
