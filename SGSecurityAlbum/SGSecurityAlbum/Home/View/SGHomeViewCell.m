@@ -49,19 +49,21 @@
     self.thumbImageView = thumbImageView;
     UILabel *nameLabel = [UILabel new];
     nameLabel.text = @"Default";
+    nameLabel.textColor = [UIColor blackColor];
     nameLabel.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:nameLabel];
     self.nameLabel = nameLabel;
+    [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.equalTo(0);
+        make.bottom.equalTo(self.backgroundImageView.mas_bottom).offset(-8);
+    }];
     [thumbImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.backgroundImageView.mas_top).offset(15);
         self.thumbLeftConstraint = make.left.equalTo(self.backgroundImageView.mas_left).offset(20);
         self.thumbRightConstraint = make.right.equalTo(self.backgroundImageView.mas_right).offset(-20);
         make.bottom.equalTo(self.nameLabel.mas_top).offset(0);
     }];
-    [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.and.right.equalTo(0);
-        make.bottom.equalTo(self.backgroundImageView.mas_bottom).offset(-8);
-    }];
+
     UILongPressGestureRecognizer *press = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(press:)];
     press.minimumPressDuration = 0.5f;
     [self.contentView addGestureRecognizer:press];
